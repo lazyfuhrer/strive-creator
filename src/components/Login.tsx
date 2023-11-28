@@ -1,3 +1,4 @@
+import NextLink from 'next/link';
 import {
   Flex,
   Box,
@@ -7,66 +8,107 @@ import {
   Checkbox,
   Stack,
   Button,
-  Heading,
   Text,
-  useColorModeValue,
   Link,
-} from '@chakra-ui/react'
+} from '@chakra-ui/react';
+import { FaArrowRight } from 'react-icons/fa6';
 
 export default function Login() {
   return (
     <Flex
-      minH={'100vh'}
+      minH={{ base: '85vh', md: '100vh' }}
       align={'center'}
       justify={'center'}
-      bg={useColorModeValue('gray.50', 'gray.800')}>
-      <Stack spacing={8} mx={'auto'} maxW={'lg'} py={12} px={6}>
-        <Stack align={'center'}>
-          <Heading fontSize={'4xl'}>Login</Heading>
+      bg={`url('/bg/image.svg') black -143.625px 0px / 119.948% 101.82% no-repeat`}
+      bgSize={'cover'}
+      bgPos={'center'}
+      mixBlendMode={'screen'}
+    >
+      <Stack
+        minW={{ base: '90%', md: '424px' }}
+        spacing={8}
+        p={{ base: 4, md: 0 }}
+      >
+        <Stack align={'center'} color={'var(--White, #FFF)'}>
+          <Text
+            fontSize={{ base: '24px', md: '32px' }}
+            fontWeight={400}
+            fontStyle={'normal'}
+          >
+            Login
+          </Text>
         </Stack>
-        <Box
-          rounded={'lg'}
-          bg={useColorModeValue('white', 'gray.700')}
-          boxShadow={'lg'}
-          p={8}>
-          <Stack spacing={4}>
+        <Box>
+          <Stack spacing={6} color={'var(--White, #FFF)'}>
             <FormControl id="email">
-              <FormLabel>Email address</FormLabel>
-              <Input type="email" />
+              <FormLabel fontSize={{ base: '16px', md: '18px' }} fontWeight={400} fontStyle={'normal'}>
+                Email address
+              </FormLabel>
+              <Input
+                border={'1px solid #575757'}
+                borderRadius={'10px'}
+                h={{ base: '36px', md: '44px' }}
+                fontSize={{ base: '18px', md: '20px' }}
+                fontWeight={400}
+                fontStyle={'normal'}
+                type="email"
+              />
             </FormControl>
             <FormControl id="password">
-              <FormLabel>Password</FormLabel>
-              <Input type="password" />
+              <FormLabel fontSize={{ base: '16px', md: '18px' }} fontWeight={400} fontStyle={'normal'}>
+                Password
+              </FormLabel>
+              <Input
+                border={'1px solid #575757'}
+                borderRadius={'10px'}
+                h={{ base: '36px', md: '44px' }}
+                fontSize={{ base: '18px', md: '20px' }}
+                fontWeight={400}
+                fontStyle={'normal'}
+                type="password"
+              />
             </FormControl>
             <Stack spacing={5}>
-
               <Stack
-                direction={{ base: 'column', sm: 'row' }}
-                align={'start'}
-                justify={'space-between'}>
+                fontSize={{ base: '14px', md: '16px' }}
+                fontWeight={400}
+                fontStyle={'normal'}
+                direction={{ base: 'column', md: 'row' }}
+                align={{ base: 'start', md: 'start' }}
+                justify={{ base: 'space-between', md: 'space-between' }}
+              >
                 <Checkbox>Remember me</Checkbox>
-                <Text color={'blue.400'}>Forgot password?</Text>
+                <Link as={NextLink} href='/reset' color={'#D467E2'}>Forgot password?</Link>
               </Stack>
 
               <Button
-                bg={'blue.400'}
+                h={{ base: '36px', md: '44px' }}
+                borderRadius={'5px'}
+                fontSize={{ base: '18px', md: '20px' }}
+                fontWeight={400}
+                fontStyle={'normal'}
+                rightIcon={<FaArrowRight />}
+                bg='var(--2, linear-gradient(90deg, #5BB3EB 0.13%, #D467E2 99.88%))'
                 color={'white'}
+                transition="transform 0.1s ease-out"
                 _hover={{
-                  bg: 'blue.500',
-                }}>
+                  transform: 'scale(1.05)',
+                }}
+              >
                 Continue
               </Button>
 
-              <Stack>
-                <Text align={'center'}>
-                  Don't have an account? <Link color={'blue.400'}>Signup</Link>
-                </Text>
-              </Stack>
 
+              <Stack fontSize={{ base: '14px', md: '16px' }} fontWeight={400} fontStyle={'normal'} color={'var(--White, #9E9E9E)'}>
+              <Text align={{ base: 'center', md: 'center' }}>
+                Don't have an account?{' '}
+                <Link as={NextLink} href='/signup' color={'#D467E2'}>Signup</Link>
+              </Text>
+              </Stack>
             </Stack>
           </Stack>
         </Box>
       </Stack>
     </Flex>
-  )
+  );
 }
