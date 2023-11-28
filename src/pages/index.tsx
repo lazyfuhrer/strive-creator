@@ -1,9 +1,7 @@
-import Login from "@/components/Login";
-
 export default function Home() {
   return (
     <>
-      <Login />
+      <h1>work in progress...</h1>
     </>
   )
-}
+};

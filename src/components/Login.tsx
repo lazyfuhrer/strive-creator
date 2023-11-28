@@ -15,15 +15,7 @@ import { FaArrowRight } from 'react-icons/fa6';
 
 export default function Login() {
   return (
-    <Flex
-      minH={{ base: '85vh', md: '100vh' }}
-      align={'center'}
-      justify={'center'}
-      bg={`url('/bg/image.svg') black -143.625px 0px / 119.948% 101.82% no-repeat`}
-      bgSize={'cover'}
-      bgPos={'center'}
-      mixBlendMode={'screen'}
-    >
+    <Flex minH={{ base: '85vh', md: '100vh' }} align={'center'} justify={'center'}>
       <Stack
         minW={{ base: '90%', md: '424px' }}
         spacing={8}
