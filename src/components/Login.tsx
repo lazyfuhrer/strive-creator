@@ -15,7 +15,7 @@ import { FaArrowRight } from 'react-icons/fa6';
 
 export default function Login() {
   return (
-    <Flex minH={{ base: '85vh', md: '100vh' }} align={'center'} justify={'center'}>
+    <Flex minH={'100vh'} align={'center'} justify={'center'}>
       <Stack
         minW={{ base: '90%', md: '424px' }}
         spacing={8}
@@ -92,10 +92,10 @@ export default function Login() {
 
 
               <Stack fontSize={{ base: '14px', md: '16px' }} fontWeight={400} fontStyle={'normal'} color={'var(--White, #9E9E9E)'}>
-              <Text align={{ base: 'center', md: 'center' }}>
-                Don't have an account?{' '}
-                <Link as={NextLink} href='/signup' color={'#D467E2'}>Signup</Link>
-              </Text>
+                <Text align={{ base: 'center', md: 'center' }}>
+                  Don't have an account?{' '}
+                  <Link as={NextLink} href='/signup' color={'#D467E2'}>Signup</Link>
+                </Text>
               </Stack>
             </Stack>
           </Stack>
