@@ -16,7 +16,7 @@ import { FcGoogle } from 'react-icons/fc';
 
 export default function SignupCard() {
   return (
-    <Flex minH={'100vh'} align={'center'} justify={'center'}>
+    <Flex mt={{ base: 6, md: 10 }} align={'center'} justify={'center'}>
       <Stack
         w={{ base: '90%', md: '554px' }}
         spacing={5}

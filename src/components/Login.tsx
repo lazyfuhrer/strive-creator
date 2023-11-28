@@ -15,7 +15,7 @@ import { FaArrowRight } from 'react-icons/fa6';
 
 export default function Login() {
   return (
-    <Flex minH={'100vh'} align={'center'} justify={'center'}>
+    <Flex mt={{base: 25, md: 28}} mb={{base: 22, md: 32}} align={'center'} justify={'center'}>
       <Stack
         minW={{ base: '90%', md: '424px' }}
         spacing={8}
