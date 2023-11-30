@@ -70,10 +70,11 @@ export default function Login() {
                 justify={{ base: 'space-between', md: 'space-between' }}
               >
                 <Checkbox>Remember me</Checkbox>
-                <Link as={NextLink} href='/reset' color={'#D467E2'}>Forgot password?</Link>
+                <Link as={NextLink} href='/reset' color={'#5BB3EB'}>Forgot password?</Link>
               </Stack>
 
               <Button
+                loadingText="Submitting"
                 h={{ base: '36px', md: '44px' }}
                 borderRadius={'5px'}
                 fontSize={{ base: '18px', md: '20px' }}
