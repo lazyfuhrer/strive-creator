@@ -5,7 +5,7 @@ import { FiUploadCloud } from "react-icons/fi";
 export default function Upload() {
   return (
     <Layout>
-      <Box p={5} pt={7}>
+      <Box p={5} pt={7} ml={{base: 0, md: 4}}>
 
         <Box>
           <Text mb={['10px', '17px']} color="var(--White, #FFF)" fontSize={['20px', '27.174px']} fontWeight={500} sx={{ 'text-edge': 'cap', 'leading-trim': 'both' }}>Upload profile photo</Text>
