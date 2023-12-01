@@ -5,7 +5,7 @@ export default function Upload() {
   return (
     <>
         <Layout>
-           
+           <h1>zzcc</h1>
         </Layout>
     </>
   )

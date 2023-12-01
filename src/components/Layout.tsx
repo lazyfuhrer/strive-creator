@@ -29,6 +29,10 @@ import { BsSearch } from "react-icons/bs";
 
 const urbanist = Urbanist({ weight: ['300', '400', '500', '600'], subsets: ['latin'] })
 
+interface LayoutProps {
+    children: React.ReactNode;
+}
+
 interface LinkItemProps {
   name: string
   icon: any
@@ -117,7 +121,7 @@ const NavItem = ({ icon, children, ...rest }: NavItemProps) => {
 const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
   return (
     <Flex
-      //bg={'red'}
+      bg={'red'}
       zIndex={'999'}
       ml={{ base: 0, md: 'auto' }}
       px={{ base: 4, md: 4 }}
@@ -125,7 +129,7 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
       alignItems="center"
       borderBottomWidth="1px"
       justifyContent={{ base: 'space-between', md: 'flex-end' }}
-      gap={80}
+      //gap={52}
       {...rest}>
         
       <IconButton
@@ -136,10 +140,56 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
         icon={<FiMenu />}
       />
 
+    <Flex
+        bg={'green'}
+        direction={['column', 'row']}
+        gap={{base: 0, md: 5}}
+        w={['40%', '352px']}
+        h={'auto'}
+        align={['initial', 'center']}
+        justify={'center'}
+        >
+        <Text
+            sx={{
+            'leading-trim': 'both',
+            'text-edge': 'cap',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            }}
+            bg={'var(--2, linear-gradient(90deg, #5BB3EB 0.13%, #D467E2 99.88%))'}
+            bgClip={'text'}
+            fontSize={['12px', '16px']}
+            fontWeight={600}
+            fontStyle={'normal'}
+            mb={[1, 0]}
+        >
+            Total Capital Raised
+        </Text>
+        <Box alignItems={['center', 'center']} justifyContent={['center', 'flex-start']} flex={'1'}>
+            <Text
+                color={'ar(--White, #FFF)'}
+                fontSize={['8px', '12px']}
+                fontWeight={400}
+                fontStyle={'normal'}
+                mb={[1, 1]}
+                >
+                $ 230.00
+            </Text>
+            <Progress
+                size={['xs', 'sm']}
+                borderRadius={'49px'}
+                bg={'rgba(255, 255, 255, 0.24)'}
+                colorScheme='pink'
+                boxShadow={'0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset'}
+                value={40}
+            />
+        </Box>
+    </Flex>
+
       <HStack spacing={{ base: '3', md: '6' }}
       //bg={'blue'}
       >
-        <InputGroup>
+        <InputGroup display={{base: 'none', md: 'inherit'}}>
             <InputLeftElement pointerEvents='none'>
               <BsSearch />
             </InputLeftElement>
@@ -158,82 +208,36 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
         <Avatar size={'sm'} src={ '/navbar/avatar.svg'} />
       </HStack>
 
-      <Flex
-        direction={['column', 'row']}
-        gap={5}
-        w={['100%', '352px']}
-        h={'auto'}
-        align={'center'}
-        justify={'center'}
-        >
-        <Text
-            sx={{
-            'leading-trim': 'both',
-            'text-edge': 'cap',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
-            }}
-            bg={'var(--2, linear-gradient(90deg, #5BB3EB 0.13%, #D467E2 99.88%))'}
-            bgClip={'text'}
-            fontSize={['14px', '16px']}
-            fontWeight={600}
-            fontStyle={'normal'}
-            mb={[3, 0]}
-        >
-            Total Capital Raised
-        </Text>
-        <Box alignItems={['center', 'center']} justifyContent={['center', 'flex-start']} flex={'1'}>
-            <Text
-                color={'ar(--White, #FFF)'}
-                fontSize={['10px', '12px']}
-                fontWeight={400}
-                fontStyle={'normal'}
-                mb={[1, 1]}
-                >
-                $ 230.00
-            </Text>
-            <Progress
-                size={['sm', 'sm']}
-                borderRadius={'49px'}
-                bg={'rgba(255, 255, 255, 0.24)'}
-                colorScheme='pink'
-                boxShadow={'0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset'}
-                value={40}
-            />
-        </Box>
-        </Flex>
-
     </Flex>
   )
 }
+  
+const Layout: React.FC<LayoutProps> = ({ children }) => {
+const { isOpen, onOpen, onClose } = useDisclosure();
 
-const Layout = () => {
-  const { isOpen, onOpen, onClose } = useDisclosure()
-
-  return (
+return (
     <Box minH="100vh" bg={`url('/bg/image.svg'), rgba(0, 0, 10, 0.9) -143.625px 0px / 119.948% 101.82% no-repeat`} bgSize={'cover'} bgPos={'center'} mixBlendMode={'inherit'}>
-      <SidebarContent onClose={() => onClose} display={{ base: 'none', md: 'block' }} />
-      <Drawer
+    <SidebarContent onClose={() => onClose} display={{ base: 'none', md: 'block' }} />
+    <Drawer
         isOpen={isOpen}
         placement="left"
         onClose={onClose}
         returnFocusOnClose={false}
         onOverlayClick={onClose}
-        size="full">
+        size="full"
+    >
         <DrawerContent>
-          <SidebarContent onClose={onClose} />
+        <SidebarContent onClose={onClose} />
         </DrawerContent>
-      </Drawer>
-      {/* mobilenav */}
-      <MobileNav onOpen={onOpen} />
-      <Box ml={{ base: 0, md: 60 }} p="4" bg={'linear-gradient(180deg, rgba(119, 119, 119, 0.12) 0%, rgba(119, 119, 119, 0.00) 100%)'} backdropFilter={'ter: blur(8.149999618530273px)'}>
+    </Drawer>
+    {/* mobilenav */}
+    <MobileNav onOpen={onOpen} />
+    <Box ml={{ base: 0, md: 60 }} p="4" bg={'linear-gradient(180deg, rgba(119, 119, 119, 0.12) 0%, rgba(119, 119, 119, 0.00) 100%)'} backdropFilter={'ter: blur(8.149999618530273px)'}>
         {/* Content */}
-        <h1>adada</h1>
-        
-        
-      </Box>
+        {children}
     </Box>
-  )
+    </Box>
+);
 }
 
 export default Layout;
