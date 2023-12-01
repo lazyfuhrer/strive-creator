@@ -387,7 +387,8 @@ export default function Profile() {
           alignItems={{ base: "center", md: "flex-start" }}
           textAlign="center"
           justify={{ base: "center", md: "space-between" }}
-          p={5}
+          pt={{ base: 0, md: 5 }}
+          
         >
           <Text
             sx={{ "text-edge": "cap", "leading-trim": "both" }}
