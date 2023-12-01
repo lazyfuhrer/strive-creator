@@ -121,7 +121,7 @@ const NavItem = ({ icon, children, ...rest }: NavItemProps) => {
 const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
   return (
     <Flex
-      bg={'red'}
+      //bg={'red'}
       zIndex={'999'}
       ml={{ base: 0, md: 'auto' }}
       px={{ base: 4, md: 4 }}
@@ -141,7 +141,7 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
       />
 
     <Flex
-        bg={'green'}
+        //bg={'green'}
         direction={['column', 'row']}
         gap={{base: 0, md: 5}}
         w={['40%', '352px']}
