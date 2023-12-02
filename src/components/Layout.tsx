@@ -26,6 +26,7 @@ import {
   FiMenu,
 } from 'react-icons/fi'
 import { BsSearch } from "react-icons/bs";
+import { Calendar, Dashboard, Message } from '@/icons/strive';
 
 const urbanist = Urbanist({ weight: ['300', '400', '500', '600'], subsets: ['latin'] })
 
@@ -52,9 +53,9 @@ interface SidebarProps extends BoxProps {
 }
 
 const LinkItems: Array<LinkItemProps> = [
-  { name: 'Dashboard', icon: FiHome },
-  { name: 'Messages', icon: FiTrendingUp },
-  { name: 'Calender', icon: FiCompass },
+  { name: 'Dashboard', icon: Dashboard },
+  { name: 'Messages', icon: Message },
+  { name: 'Calender', icon: Calendar },
 ]
 
 const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
@@ -105,7 +106,7 @@ const NavItem = ({ icon, children, ...rest }: NavItemProps) => {
         {icon && (
           <Icon
             mr="4"
-            fontSize="16"
+            fontSize="22"
             _groupHover={{
               color: 'white',
             }}
@@ -122,7 +123,7 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
   return (
     <Flex
       //bg={'red'}
-      zIndex={'999'}
+      //zIndex={'999'}
       ml={{ base: 0, md: 'auto' }}
       px={{ base: 4, md: 4 }}
       height="20"
