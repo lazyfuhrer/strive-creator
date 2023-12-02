@@ -72,7 +72,7 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
         <CloseButton display={{ base: 'flex', md: 'none' }} onClick={onClose} />
       </Flex>
       {LinkItems.map((link) => (
-        <NavItem key={link.name} icon={link.icon}>
+        <NavItem key={link.name} icon={link.icon} linkName={link.name}>
           {link.name}
         </NavItem>
       ))}
@@ -80,7 +80,7 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
   )
 }
 
-const NavItem = ({ icon, children, ...rest }: NavItemProps) => {
+const NavItem = ({ icon, children, linkName , ...rest }: NavItemProps & { linkName: string }) => {
   return (
     <Box
       as="a"
@@ -114,6 +114,7 @@ const NavItem = ({ icon, children, ...rest }: NavItemProps) => {
           />
         )}
         {children}
+        {linkName === 'Messages' && <Image ml={8} src="/navbar/msg.svg" />}
       </Flex>
     </Box>
   )
