@@ -421,7 +421,7 @@ export default function Profile() {
               backdropFilter={"blur(2px)"}
             />
             <InputRightElement pointerEvents="none">
-              <BsSearch />
+              <Icon as={BsSearch} color={'#8D8D8D'} w={'18px'} h={'18px'} />
             </InputRightElement>
           </InputGroup>
         </Flex>
