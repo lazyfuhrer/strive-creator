@@ -94,7 +94,7 @@ export default function Login() {
 
               <Stack fontSize={{ base: '14px', md: '16px' }} fontWeight={400} fontStyle={'normal'} color={'var(--White, #9E9E9E)'}>
                 <Text align={{ base: 'center', md: 'center' }}>
-                  Don't have an account?{' '}<Link as={NextLink} href='/signup' color={'#D467E2'}>Signup</Link>
+                  Don&apos;t have an account?{' '}<Link as={NextLink} href='/signup' color={'#D467E2'}>Signup</Link>
                 </Text>
               </Stack>
             </Stack>
