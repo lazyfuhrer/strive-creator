@@ -60,8 +60,8 @@ export default function Login() {
                 type="password"
               />
             </FormControl>
-            <Stack spacing={5}>
-              <Stack
+            <Stack mt={1} spacing={5}>
+              {/* <Stack
                 fontSize={{ base: '14px', md: '16px' }}
                 fontWeight={400}
                 fontStyle={'normal'}
@@ -71,7 +71,7 @@ export default function Login() {
               >
                 <Checkbox>Remember me</Checkbox>
                 <Link as={NextLink} href='/reset' color={'#5BB3EB'}>Forgot password?</Link>
-              </Stack>
+              </Stack> */}
 
               <Button
                 loadingText="Submitting"
