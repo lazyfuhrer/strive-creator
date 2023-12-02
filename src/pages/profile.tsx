@@ -31,7 +31,7 @@ export default function Profile() {
       <Flex justify={"space-between"} p={7} pr={12} pl={{ base: 0, md: 2 }}>
         <Flex gap={"17px"}>
           <Box
-            bgImage={"/profile/profile.svg"}
+            bgImage={"/profile/andy.svg"}
             w={"208px"}
             h={"201px"}
             borderRadius={"15px"}
