@@ -28,8 +28,8 @@ export default function Profile() {
   const cardIndices = Array.from({ length: cardCount }, (_, index) => index);
   return (
     <Layout>
-      <Flex justify={"space-between"} p={7} pr={12} pl={{ base: 0, md: 2 }}>
-        <Flex gap={"17px"}>
+      <Flex justify={"space-between"} p={{base: 0, md: 7}} pr={{base: 0, md: 12}} pl={{ base: 0, md: 2 }} direction={{base: 'column', md: 'initial'}}>
+        <Flex p={{base: 5, md: 0}} gap={"17px"} direction={{base: 'column', md: 'initial'}} w={{base: 'auto', md: 'initial'}}>
           <Box
             bgImage={"/profile/andy.svg"}
             w={"208px"}
@@ -71,7 +71,7 @@ export default function Profile() {
               fontSize="14px"
               fontStyle="normal"
               fontWeight={300}
-              maxW={"498px"}
+              maxW={'498px'}
             >
               Lorem ipsum dolor sit amet consectetur. Pellentesque iaculis
               consectetur vel nunc facilisi. Quis scelerisque ornare elit amet.
@@ -124,19 +124,22 @@ export default function Profile() {
         </Flex>
 
         <Flex
-          maxW={"395px"}
-          maxH={"197px"}
+          maxW={{base: 'auto', md: '395px'}}
+          maxH={{base: 'auto', md: '197px'}}
           flexShrink={0}
           direction={"column"}
-          gap={2}
+          gap={{base: 5, md: 2}}
+          align={{base: 'center', md: 'normal'}}
+          justify={{base: 'center', md: 'normal'}}
+          p={{base: 5, md: 0}}
         >
-          <Flex gap={2}>
+          <Flex w={{base: '100%', md: 'initial'}} h={{base: '100%', md: 'initial'}} gap={{base: 5, md: 2}} direction={{base: 'column', md: 'initial'}}>
             <Flex
               p={2}
               pl={3}
               direction={"column"}
-              w={"205px"}
-              h={"95px"}
+              w={{base: 'auto', md: '205px'}}
+              h={{base: 'auto', md: '95px'}}
               flexShrink={0}
               borderRadius={"5.239px"}
               borderTop={"1.048px solid rgba(255, 255, 255, 0.08)"}
@@ -146,7 +149,7 @@ export default function Profile() {
               backdropFilter={"blur(9.220159530639648px)"}
             >
               <Flex w={"100%"} justify={"space-between"}>
-                <Flex direction={"column"} gap={2}>
+                <Flex direction={"column"} gap={2} >
                   <Text
                     color="var(--White, #FFF)"
                     fontSize="12.573px"
@@ -192,8 +195,8 @@ export default function Profile() {
               p={2}
               pl={3}
               direction={"column"}
-              w={"205px"}
-              h={"95px"}
+              w={{base: 'auto', md: '205px'}}
+              h={{base: 'auto', md: '95px'}}
               flexShrink={0}
               borderRadius={"5.239px"}
               borderTop={"1.048px solid rgba(255, 255, 255, 0.08)"}
@@ -246,13 +249,13 @@ export default function Profile() {
             </Flex>
           </Flex>
 
-          <Flex gap={2}>
+          <Flex w={{base: '100%', md: 'initial'}} h={{base: '100%', md: 'initial'}} gap={{base: 5, md: 2}} direction={{base: 'column', md: 'initial'}}>
             <Flex
               p={2}
               pl={3}
               direction={"column"}
-              w={"205px"}
-              h={"95px"}
+              w={{base: 'auto', md: '205px'}}
+              h={{base: 'auto', md: '95px'}}
               flexShrink={0}
               borderRadius={"5.239px"}
               borderTop={"1.048px solid rgba(255, 255, 255, 0.08)"}
@@ -308,8 +311,8 @@ export default function Profile() {
               p={2}
               pl={3}
               direction={"column"}
-              w={"205px"}
-              h={"95px"}
+              w={{base: 'auto', md: '205px'}}
+              h={{base: 'auto', md: '95px'}}
               flexShrink={0}
               borderRadius={"5.239px"}
               borderTop={"1.048px solid rgba(255, 255, 255, 0.08)"}
@@ -374,7 +377,8 @@ export default function Profile() {
       />
 
       <Flex
-        p={5}
+        p={{ base: 0, md: 5 }}
+        pt={{ base: 3, md: 0 }}
         pl={{ base: 0, md: 2 }}
         direction={"column"}
         alignContent={"center"}
@@ -400,9 +404,8 @@ export default function Profile() {
             Recent Projects
           </Text>
           <InputGroup
-            w="full"
-            maxW={{ base: "full", md: "516px" }}
-            h={{ base: "auto", md: "44px" }}
+            maxW={{ base: "300px", md: "516px" }}
+            h={{ base: "full", md: "44px" }}
             flexShrink={0}
           >
             <Input
@@ -411,7 +414,7 @@ export default function Profile() {
               placeholder="Start searching here..."
               _placeholder={{
                 color: "#8D8D8D",
-                fontSize: "16px",
+                fontSize: { base: "14px", md: "16px" },
                 fontWeight: 400,
                 fontStyle: "normal",
               }}
@@ -421,7 +424,7 @@ export default function Profile() {
               backdropFilter={"blur(2px)"}
             />
             <InputRightElement pointerEvents="none">
-              <Icon as={BsSearch} color={'#8D8D8D'} w={'18px'} h={'18px'} />
+              <Icon as={BsSearch} color={'#8D8D8D'} w={{ base: "16px", md: "18px" }} h={{ base: "16px", md: "18px" }} />
             </InputRightElement>
           </InputGroup>
         </Flex>
