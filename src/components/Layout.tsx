@@ -89,6 +89,7 @@ const NavItem = ({ icon, children, linkName , ...rest }: NavItemProps & { linkNa
       _focus={{ boxShadow: 'none' }}>
       <Flex
         className={urbanist.className}
+        color={'#898989'}
         fontSize={'15.528px'}
         fontWeight={400}
         align="center"
