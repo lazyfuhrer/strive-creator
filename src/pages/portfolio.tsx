@@ -17,7 +17,7 @@ export default function Portfolio() {
                             $2040.00
                         </Text>
                     </Flex>
-                    <Flex p={5} direction={'column'} w={{base: 'auto', md: '356px'}} h={{base: 'auto', md: '144px'}} flexShrink={0} borderRadius={'7.709px'} border={'0.771px solid var(--2, #5BB3EB)'} bg={'rgba(31, 31, 31, 0.15)'} backdropFilter={'blur(7.169522285461426px)'}>
+                    <Flex p={5} direction={'column'} w={{base: 'auto', md: '356px'}} h={{base: 'auto', md: '144px'}} flexShrink={0} borderRadius={'7.709px'} border={'0.771px solid var(--2, #D467E2)'} bg={'rgba(31, 31, 31, 0.15)'} backdropFilter={'blur(7.169522285461426px)'}>
                         <Text color="var(--White, #FFF)" fontSize={['20px', '20.77px']} fontStyle={'normal'} fontWeight={400} sx={{ 'text-edge': 'cap', 'leading-trim': 'both' }} textTransform={'uppercase'} letterSpacing={'0.831px'}>
                             Total Gain
                         </Text>

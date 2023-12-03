@@ -136,6 +136,25 @@ export default function SignupCard() {
               />
             </FormControl>
 
+            <FormControl id="username" isRequired>
+              <FormLabel
+                fontSize={{ base: '16px', md: '18px' }}
+                fontWeight={400}
+                fontStyle={'normal'}
+              >
+                Username
+              </FormLabel>
+              <Input
+                border={'1px solid #575757'}
+                borderRadius={'10px'}
+                h={{ base: '36px', md: '44px' }}
+                fontSize={{ base: '18px', md: '20px' }}
+                fontWeight={400}
+                fontStyle={'normal'}
+                type="username"
+              />
+            </FormControl>
+
             <Stack spacing={6} direction={['column', 'row']}>
               <FormControl id="password" isRequired>
                 <FormLabel
