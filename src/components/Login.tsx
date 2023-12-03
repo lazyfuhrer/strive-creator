@@ -72,7 +72,6 @@ export default function Login() {
                 <Checkbox>Remember me</Checkbox>
                 <Link as={NextLink} href='/reset' color={'#5BB3EB'}>Forgot password?</Link>
               </Stack> */}
-
               <Button
                 loadingText="Submitting"
                 h={{ base: '36px', md: '44px' }}
