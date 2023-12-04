@@ -60,7 +60,7 @@ export default function UploadProject() {
                 <Flex direction={'column'} gap={3}>
                     <Text color="rgba(255, 255, 255, 0.64)" fontSize={['20px', '27.174px']} fontStyle={'normal'} fontWeight={400} sx={{ 'text-edge': 'cap', 'leading-trim': 'both' }}>Amount</Text>
                     <InputGroup>
-                        {/* <InputLeftAddon alignItems={'center'} justifyContent={'center'} h={'79px'} w={'79px'} children='$' fontSize={'20px'} /> */}
+                        <InputLeftAddon alignItems={'center'} justifyContent={'center'} h={'79px'} w={'79px'} fontSize={'20px'}>$</InputLeftAddon>
                         <Input type="number" placeholder="Enter amount" _placeholder={{ color: 'var(--grayscale-pale-gray, #AAA)', fontSize: '20px', fontWeight: 400, fontStyle: 'normal'}} h={'79px'} borderRadius={'10px'} borderBottom={'1px solid #676767'} bg={'rgba(32, 32, 32, 0.41)'} backdropFilter={'blur(50.45000076293945px)'}/>
                     </InputGroup>
                     
