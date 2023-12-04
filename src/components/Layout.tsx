@@ -27,6 +27,7 @@ import {
 } from 'react-icons/fi'
 import { BsSearch } from "react-icons/bs";
 import { Calendar, Dashboard, Message } from '@/icons/strive';
+import { ConnectButton } from '@rainbow-me/rainbowkit';
 
 const urbanist = Urbanist({ weight: ['300', '400', '500', '600'], subsets: ['latin'] })
 
@@ -189,6 +190,8 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
         </Box>
     </Flex>
 
+      <ConnectButton />
+            
       <HStack spacing={{ base: '3', md: '6' }}
       //bg={'blue'}
       >
