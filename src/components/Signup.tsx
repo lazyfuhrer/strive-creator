@@ -13,8 +13,70 @@ import {
 } from '@chakra-ui/react';
 import { FaArrowRight } from 'react-icons/fa6';
 import { FcGoogle } from 'react-icons/fc';
+import { useState } from 'react';
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { app } from '@/firebase-config';
 
 export default function SignupCard() {
+  const [user, setUser] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    username: '',
+    password: '',
+    confirmPassword: '',
+  });
+
+  const handleInputChange = (fieldName: keyof typeof user, value: string) => {
+    setUser((prevUser) => ({
+      ...prevUser,
+      [fieldName]: value,
+    }));
+  };  
+
+  const handleSignUp = async () => {
+    const auth = getAuth(app);
+    // Check if any required field is empty
+    const requiredFields: Array<keyof typeof user> = ['firstName', 'lastName', 'email', 'username', 'password', 'confirmPassword'];
+  
+    for (const field of requiredFields) {
+      if (!user[field]) {
+        alert(`Please fill in the all the fields`);
+        // You may want to display an error message or handle this case accordingly
+        return;
+      }
+    }
+  
+    // Check if password and confirmPassword match
+    if (user.password !== user.confirmPassword) {
+      alert('Password and Confirm Password do not match');
+      // You may want to display an error message or handle this case accordingly
+      return;
+    }
+  
+    // Continue with sign-up logic if all fields are filled and passwords match
+    console.log('Signing up with:', user);
+  
+    // Call your sign-up function here
+    // Example: signUpUser(user.email, user.password);
+    /*try {
+      const userCredential = await createUserWithEmailAndPassword( auth, user.email, user.password );
+      
+      // Signed up 
+      const signedUpUser = userCredential.user;
+      console.log("User signed up:", signedUpUser.uid);
+      
+      // Additional logic if needed...
+  
+    } catch (error: any) {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      alert(errorMessage);
+      return;
+      // Handle the error as needed...
+    }*/
+  };  
+
   return (
     <Flex mt={{ base: 6, md: 10 }} align={'center'} justify={'center'}>
       <Stack
@@ -88,6 +150,8 @@ export default function SignupCard() {
                   First Name
                 </FormLabel>
                 <Input
+                  value={user.firstName}
+                  onChange={(e) => handleInputChange('firstName', e.target.value)}
                   border={'1px solid #575757'}
                   borderRadius={'10px'}
                   h={{ base: '36px', md: '44px' }}
@@ -106,6 +170,8 @@ export default function SignupCard() {
                   Last Name
                 </FormLabel>
                 <Input
+                  value={user.lastName}
+                  onChange={(e) => handleInputChange('lastName', e.target.value)}
                   border={'1px solid #575757'}
                   borderRadius={'10px'}
                   h={{ base: '36px', md: '44px' }}
@@ -126,6 +192,8 @@ export default function SignupCard() {
                 Email address
               </FormLabel>
               <Input
+                value={user.email}
+                onChange={(e) => handleInputChange('email', e.target.value)}
                 border={'1px solid #575757'}
                 borderRadius={'10px'}
                 h={{ base: '36px', md: '44px' }}
@@ -145,6 +213,8 @@ export default function SignupCard() {
                 Username
               </FormLabel>
               <Input
+                value={user.username}
+                onChange={(e) => handleInputChange('username', e.target.value)}
                 border={'1px solid #575757'}
                 borderRadius={'10px'}
                 h={{ base: '36px', md: '44px' }}
@@ -165,6 +235,8 @@ export default function SignupCard() {
                   Password
                 </FormLabel>
                 <Input
+                  value={user.password}
+                  onChange={(e) => handleInputChange('password', e.target.value)}
                   border={'1px solid #575757'}
                   borderRadius={'10px'}
                   h={{ base: '36px', md: '44px' }}
@@ -183,6 +255,8 @@ export default function SignupCard() {
                   Confirm Password
                 </FormLabel>
                 <Input
+                  value={user.confirmPassword}
+                  onChange={(e) => handleInputChange('confirmPassword', e.target.value)}
                   border={'1px solid #575757'}
                   borderRadius={'10px'}
                   h={{ base: '36px', md: '44px' }}
@@ -216,6 +290,7 @@ export default function SignupCard() {
                 _hover={{
                   transform: 'scale(1.05)',
                 }}
+                onClick={handleSignUp}
               >
                 Continue as a user
               </Button>
@@ -234,6 +309,7 @@ export default function SignupCard() {
                 _hover={{
                   transform: 'scale(1.05)',
                 }}
+                onClick={handleSignUp}
               >
                 Continue as a creator
               </Button>

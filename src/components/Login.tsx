@@ -12,8 +12,59 @@ import {
   Link,
 } from '@chakra-ui/react';
 import { FaArrowRight } from 'react-icons/fa6';
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { app } from '@/firebase-config';
+import { useState } from 'react';
+
 
 export default function Login() {
+  const [user, setUser] = useState({
+    email: '',
+    password: '',
+  });
+
+  const handleInputChange = (fieldName: keyof typeof user, value: string) => {
+    setUser((prevUser) => ({
+      ...prevUser,
+      [fieldName]: value,
+    }));
+  };  
+
+  const handleLogIn = async () => {
+    const auth = getAuth(app);
+    // Check if any required field is empty
+    const requiredFields: Array<keyof typeof user> = ['email', 'password'];
+  
+    for (const field of requiredFields) {
+      if (!user[field]) {
+        alert(`Please fill in the all the fields`);
+        // You may want to display an error message or handle this case accordingly
+        return;
+      }
+    }
+  
+    // Continue with sign-up logic if all fields are filled and passwords match
+    console.log('Signing in user:', user);
+
+    try {
+      const userCredential = await signInWithEmailAndPassword( auth, user.email, user.password );
+      
+      // Logged in
+      const loggedInUser = userCredential.user;
+      console.log("User Logged in:", loggedInUser.uid);
+      
+      // Additional logic if needed...
+  
+    } catch (error: any) {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      alert(errorMessage)
+      return;
+      // Handle the error as needed...
+    }
+  
+  };  
+
   return (
     <Flex mt={{base: 25, md: 28}} mb={{base: 22, md: 32}} align={'center'} justify={'center'}>
       <Stack
@@ -37,6 +88,8 @@ export default function Login() {
                 Email address
               </FormLabel>
               <Input
+                value={user.email}
+                onChange={(e) => handleInputChange('email', e.target.value)}
                 border={'1px solid #575757'}
                 borderRadius={'10px'}
                 h={{ base: '36px', md: '44px' }}
@@ -51,6 +104,8 @@ export default function Login() {
                 Password
               </FormLabel>
               <Input
+                value={user.password}
+                onChange={(e) => handleInputChange('password', e.target.value)}
                 border={'1px solid #575757'}
                 borderRadius={'10px'}
                 h={{ base: '36px', md: '44px' }}
@@ -86,6 +141,7 @@ export default function Login() {
                 _hover={{
                   transform: 'scale(1.05)',
                 }}
+                onClick={handleLogIn}
               >
                 Continue
               </Button>
