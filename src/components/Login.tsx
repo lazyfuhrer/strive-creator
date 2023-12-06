@@ -40,12 +40,10 @@ export default function Login() {
     for (const field of requiredFields) {
       if (!user[field]) {
         alert(`Please fill in the all the fields`);
-        // You may want to display an error message or handle this case accordingly
         return;
       }
     }
   
-    // Continue with sign-up logic if all fields are filled and passwords match
     console.log('Signing in user:', user);
 
     try {

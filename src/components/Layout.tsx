@@ -133,15 +133,13 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
     const auth = getAuth(app);
     try {
       await signOut(auth);
-      // Sign-out successful.
       console.log('User signed out successfully');
 
      router.push('/login');
-     
+
     } catch (error) {
       //@ts-ignore
       alert(error.message);
-      // Handle the error as needed...
     }
   };
 
