@@ -26,7 +26,7 @@ export default function UploadProject() {
 
                     <Center display={'inline-flex'} flexDir={'column'} gap={'15px'} w={['auto', '777px']} h={['auto', '217px']} p={'24px'} flexShrink={0} border={'1px dashed #2D333E'} bg={'rgba(13, 13, 13, 0.13)'} borderRadius={'4px'}>
                         <Icon w={'24px'} h={'24px'} as={FiUploadCloud}/>
-                        <Text color={'#DCE0E6'} fontSize={{base: '12px', md: '14px'}} fontWeight={400} textAlign={'center'} alignSelf={'stretch'}>Browse and chose the files you want to upload from your computer</Text>
+                        <Text color={'#DCE0E6'} fontSize={{base: '12px', md: '15px'}} fontWeight={400} textAlign={'center'} alignSelf={'stretch'}>Browse and chose the files you want to upload from your computer</Text>
                         <IconButton size={{base: 'xs', md: 'auto'}} aria-label='logo' bg={'transparent'} icon={<Image src="/upload/add.svg" alt="logo" />} _hover={{ bg: 'transparent' }} />
                     </Center>
 
@@ -93,9 +93,6 @@ export default function UploadProject() {
                                 </Flex>
                                 <Icon as={Checkmark} w={'25px'} h={'25px'} />
                             </Flex>
-
-                            
-                            
                         </Flex>
                     </Flex>
 
@@ -136,11 +133,6 @@ export default function UploadProject() {
                         <InputLeftAddon alignItems={'center'} justifyContent={'center'} h={['55px', '79px']} w={'79px'} fontSize={'20px'}>$</InputLeftAddon>
                         <Input type="number" placeholder="Enter amount" _placeholder={{ color: 'var(--grayscale-pale-gray, #AAA)', fontSize: {base: '15px', md: '20px'}, fontWeight: 400, fontStyle: 'normal'}} h={['55px', '79px']} borderRadius={'10px'} borderBottom={'1px solid #676767'} bg={'rgba(32, 32, 32, 0.41)'} backdropFilter={'blur(50.45000076293945px)'}/>
                     </InputGroup>
-                    
-                </Flex>
-
-                <Flex>
-
                 </Flex>
             </Flex>
 
