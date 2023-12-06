@@ -1,10 +1,21 @@
 import Layout from "@/components/Layout";
 import { Checkmark, Upload, VideoCall, Write } from "@/icons/strive";
+import { getMaticExchangeRates } from "@/utils/actions";
 import { Button, Center, Flex, Icon, IconButton, Image, Input, InputGroup, InputLeftAddon, Select, Text, Textarea } from "@chakra-ui/react";
 import { FiUploadCloud, FiUpload } from "react-icons/fi";
 import { MdAttachMoney } from "react-icons/md";
 
 export default function UploadProject() {
+    const handleConvertClick = async () => {
+      const usdValueToConvert = 0.01;
+      const result = await getMaticExchangeRates(usdValueToConvert);
+  
+      if (result !== null) {
+        console.log(result)
+      } else {
+        console.error('Failed to retrieve MATIC value');
+      }
+    };
   return (
     <Layout>
         <Flex direction={'column'} p={5}>
@@ -110,6 +121,7 @@ export default function UploadProject() {
                         fontStyle={'normal'}
                         bg='var(--2, linear-gradient(90deg, #5BB3EB 0.13%, #D467E2 99.88%))'
                         color={'white'}
+                        onClick={handleConvertClick}
                     >
                         Publish
                     </Button>

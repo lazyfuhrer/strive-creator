@@ -12,19 +12,19 @@ import { polygonMumbai } from 'wagmi/chains';
 import { alchemyProvider } from 'wagmi/providers/alchemy';
 import { publicProvider } from 'wagmi/providers/public';
 
-const tomorrow = Tomorrow({ weight: ['300', '400', '500', '600'], subsets: ['latin'] })
+const tomorrow = Tomorrow({ weight: ['300', '400', '500', '600'], subsets: ['latin'] });
 
 const { chains, publicClient } = configureChains(
   [polygonMumbai],
   [
-    alchemyProvider({ apiKey: 'GWjHlCAyRQ-suLYu1DKVTUZ_BHr6-GXj' }),
+    alchemyProvider({ apiKey: process.env.NEXT_PUBLIC_ALCHEMY_API_KEY || ' ' }),
     publicProvider()
   ]
 );
 
 const { connectors } = getDefaultWallets({
   appName: 'cloakr',
-  projectId: '5c659807e18f4d904b533c75f7442276',
+  projectId: process.env.NEXT_PUBLIC_PROJECT_ID || ' ',
   chains
 });
 

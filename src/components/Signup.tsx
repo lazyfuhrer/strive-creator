@@ -33,7 +33,7 @@ export default function SignupCard() {
             Welcome to Strive
           </Text>
 
-          <Center pt={5} w={'full'}>
+          {/* <Center pt={5} w={'full'}>
             <Button
                 borderRadius={'10px'}
                 bg={'var(--White, #FFF)'}
@@ -73,7 +73,7 @@ export default function SignupCard() {
                 ml: {base: 3, md: 4},
             }}>
             <Text fontSize={'16px'} fontWeight={400} fontStyle={'normal'}>or register with your email</Text>
-          </Flex>    
+          </Flex>     */}
         </Stack>
 
         <Box>
