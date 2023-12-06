@@ -15,9 +15,11 @@ import { FaArrowRight } from 'react-icons/fa6';
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { app } from '@/firebase-config';
 import { useState } from 'react';
+import { useRouter } from 'next/router';
 
 
 export default function Login() {
+  const router = useRouter();
   const [user, setUser] = useState({
     email: '',
     password: '',
@@ -53,7 +55,7 @@ export default function Login() {
       const loggedInUser = userCredential.user;
       console.log("User Logged in:", loggedInUser.uid);
       
-      // Additional logic if needed...
+      router.push('/upload');
   
     } catch (error: any) {
       const errorCode = error.code;

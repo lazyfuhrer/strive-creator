@@ -17,17 +17,21 @@ import {
   Input,
   Text,
   Progress,
+  MenuButton,
+  Menu,
+  MenuList,
+  MenuItem,
 } from '@chakra-ui/react'
 import { Urbanist } from 'next/font/google'
 import {
-  FiHome,
-  FiTrendingUp,
-  FiCompass,
   FiMenu,
 } from 'react-icons/fi'
 import { BsSearch } from "react-icons/bs";
 import { Calendar, Dashboard, Message } from '@/icons/strive';
 import { ConnectButton } from '@rainbow-me/rainbowkit';
+import { getAuth, signOut } from 'firebase/auth';
+import { app } from '@/firebase-config';
+import { useRouter } from 'next/router';
 
 const urbanist = Urbanist({ weight: ['300', '400', '500', '600'], subsets: ['latin'] })
 
@@ -123,6 +127,24 @@ const NavItem = ({ icon, children, linkName , ...rest }: NavItemProps & { linkNa
 }
 
 const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
+  const router = useRouter();
+
+  const handleSignOut = async () => {
+    const auth = getAuth(app);
+    try {
+      await signOut(auth);
+      // Sign-out successful.
+      console.log('User signed out successfully');
+
+     router.push('/login');
+     
+    } catch (error) {
+      //@ts-ignore
+      alert(error.message);
+      // Handle the error as needed...
+    }
+  };
+
   return (
     <Flex
       //bg={'red'}
@@ -211,7 +233,16 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
             />
         </InputGroup>
         <IconButton size="lg" bg={'transparent'} variant="ghost" aria-label="open menu" icon={<Image src="/navbar/bell.svg" alt="bell" />} />
-        <Avatar size={'sm'} src={ '/navbar/avatar.svg'} />
+        <Menu>
+          <MenuButton>
+            <Avatar size={'sm'} src={ '/navbar/avatar.svg'} />
+          </MenuButton>
+          <MenuList>
+            <MenuItem>Profile</MenuItem>
+            <MenuItem onClick={handleSignOut}>Sign out</MenuItem>
+          </MenuList>
+        </Menu>
+  
       </HStack>
 
     </Flex>
