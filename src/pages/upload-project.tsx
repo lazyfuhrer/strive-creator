@@ -2,14 +2,15 @@ import Layout from "@/components/Layout";
 import { Checkmark, Upload, VideoCall, Write } from "@/icons/strive";
 import { getMaticExchangeRates } from "@/utils/actions";
 import { Button, Center, Flex, Icon, IconButton, Image, Input, InputGroup, InputLeftAddon, Select, Text, Textarea } from "@chakra-ui/react";
+import { useState } from "react";
 import { FiUploadCloud, FiUpload } from "react-icons/fi";
 import { MdAttachMoney } from "react-icons/md";
 
 export default function UploadProject() {
+    const [usdValueToConvert, setUsdValueToConvert] = useState(0);
+    
     const handleConvertClick = async () => {
-      const usdValueToConvert = 0.01;
       const result = await getMaticExchangeRates(usdValueToConvert);
-  
       if (result !== null) {
         console.log(result)
       } else {
@@ -58,7 +59,7 @@ export default function UploadProject() {
 
                 </Flex>
 
-                <Flex p={6} direction={'column'} borderRadius={'20px'} borderBottom={'1px solid #676767'} bg={'rgba(82, 82, 82, 0.41)'} backdropFilter={'blur(50.45000076293945px)'} w={{base: 'auto', md: '353px'}}>
+                <Flex p={6} direction={'column'} borderRadius={'20px'} borderBottom={'1px solid #676767'} bg={'rgba(82, 82, 82, 0.41)'} backdropFilter={'blur(50.45000076293945px)'} w={{base: 'auto', md: '400px'}}>
                     <Image src="/upload-project/box.svg" alt="logo" />
 
                     <Flex mt={4}>
@@ -143,7 +144,7 @@ export default function UploadProject() {
                     <Text color="rgba(255, 255, 255, 0.64)" fontSize={['20px', '27.174px']} fontStyle={'normal'} fontWeight={400} sx={{ 'text-edge': 'cap', 'leading-trim': 'both' }}>Amount</Text>
                     <InputGroup>
                         <InputLeftAddon alignItems={'center'} justifyContent={'center'} h={['55px', '79px']} w={'79px'} fontSize={'20px'}>$</InputLeftAddon>
-                        <Input type="number" placeholder="Enter amount" _placeholder={{ color: 'var(--grayscale-pale-gray, #AAA)', fontSize: {base: '15px', md: '20px'}, fontWeight: 400, fontStyle: 'normal'}} h={['55px', '79px']} borderRadius={'10px'} borderBottom={'1px solid #676767'} bg={'rgba(32, 32, 32, 0.41)'} backdropFilter={'blur(50.45000076293945px)'}/>
+                        <Input type="number" value={usdValueToConvert} onChange={(e) => setUsdValueToConvert(parseFloat(e.target.value))} placeholder="Enter amount" _placeholder={{ color: 'var(--grayscale-pale-gray, #AAA)', fontSize: {base: '15px', md: '20px'}, fontWeight: 400, fontStyle: 'normal'}} h={['55px', '79px']} borderRadius={'10px'} borderBottom={'1px solid #676767'} bg={'rgba(32, 32, 32, 0.41)'} backdropFilter={'blur(50.45000076293945px)'}/>
                     </InputGroup>
                 </Flex>
             </Flex>
