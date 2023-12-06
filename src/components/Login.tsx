@@ -53,7 +53,7 @@ export default function Login() {
       const loggedInUser = userCredential.user;
       console.log("User Logged in:", loggedInUser.uid);
       
-      router.push('/upload');
+      router.push('/profile');
   
     } catch (error: any) {
       const errorCode = error.code;
