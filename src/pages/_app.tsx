@@ -38,7 +38,7 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <WagmiConfig config={wagmiConfig}>
       <RainbowKitProvider chains={chains}>
-        <ChakraProvider>
+        <ChakraProvider toastOptions={{ defaultOptions: { position: 'top-right' } }}>
           <main className={tomorrow.className}>
             <Component {...pageProps} />
           </main>

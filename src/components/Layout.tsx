@@ -21,6 +21,7 @@ import {
   Menu,
   MenuList,
   MenuItem,
+  useToast,
 } from '@chakra-ui/react'
 import { Urbanist } from 'next/font/google'
 import {
@@ -129,16 +130,24 @@ const NavItem = ({ icon, children, linkName , ...rest }: NavItemProps & { linkNa
 
 const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
   const router = useRouter();
-
+  const toast = useToast();
+  
   const handleSignOut = async () => {
     const auth = getAuth(app);
     try {
+      await signOut(auth);
       deleteCookie('jwtToken');
       router.push('/login');
 
-    } catch (error) {
+    } catch (error: any) {
       //@ts-ignore
-      alert(error.message);
+      toast({
+        title: 'Error',
+        description: error.message,
+        status: 'error',
+        duration: 5000,
+        isClosable: true,
+      });
     }
   };
 

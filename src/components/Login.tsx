@@ -10,6 +10,7 @@ import {
   Button,
   Text,
   Link,
+  useToast,
 } from '@chakra-ui/react';
 import { FaArrowRight } from 'react-icons/fa6';
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
@@ -20,6 +21,7 @@ import { setCookie } from 'cookies-next';
 
 
 export default function Login() {
+  const toast = useToast();
   const router = useRouter();
   const [user, setUser] = useState({
     email: '',
@@ -40,7 +42,13 @@ export default function Login() {
   
     for (const field of requiredFields) {
       if (!user[field]) {
-        alert(`Please fill in the all the fields`);
+        toast({
+          title: 'Error',
+          description: `Please fill in the all the fields`,
+          status: 'error',
+          duration: 5000,
+          isClosable: true,
+        });
         return;
       }
     }
@@ -49,22 +57,34 @@ export default function Login() {
 
     try {
       const userCredential = await signInWithEmailAndPassword( auth, user.email, user.password );
-      
-      
       // Logged in
       const loggedInUser = userCredential.user;
       //@ts-ignore
-      console.log(loggedInUser.accessToken)
+      //console.log(loggedInUser.accessToken)
       //@ts-ignore
       setCookie('jwtToken', loggedInUser.accessToken);
       console.log("User Logged in:", loggedInUser.uid);
       
       router.push('/profile');
+      toast({
+        title: 'Success',
+        description: 'Successfully logged in!',
+        status: 'success',
+        duration: 5000,
+        isClosable: true,
+      });
   
     } catch (error: any) {
+      console.log(error)
       const errorCode = error.code;
       const errorMessage = error.message;
-      alert(errorMessage)
+      toast({
+        title: 'Error',
+        description: errorMessage,
+        status: 'error',
+        duration: 5000,
+        isClosable: true,
+      });
       return;
       // Handle the error as needed...
     }
