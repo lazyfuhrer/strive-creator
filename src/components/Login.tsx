@@ -16,6 +16,7 @@ import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { app } from '@/firebase-config';
 import { useState } from 'react';
 import { useRouter } from 'next/router';
+import { setCookie } from 'cookies-next';
 
 
 export default function Login() {
@@ -49,8 +50,13 @@ export default function Login() {
     try {
       const userCredential = await signInWithEmailAndPassword( auth, user.email, user.password );
       
+      
       // Logged in
       const loggedInUser = userCredential.user;
+      //@ts-ignore
+      console.log(loggedInUser.accessToken)
+      //@ts-ignore
+      setCookie('jwtToken', loggedInUser.accessToken);
       console.log("User Logged in:", loggedInUser.uid);
       
       router.push('/profile');

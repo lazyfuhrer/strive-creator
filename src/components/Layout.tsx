@@ -32,6 +32,7 @@ import { ConnectButton } from '@rainbow-me/rainbowkit';
 import { getAuth, signOut } from 'firebase/auth';
 import { app } from '@/firebase-config';
 import { useRouter } from 'next/router';
+import { deleteCookie } from 'cookies-next';
 
 const urbanist = Urbanist({ weight: ['300', '400', '500', '600'], subsets: ['latin'] })
 
@@ -132,10 +133,8 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
   const handleSignOut = async () => {
     const auth = getAuth(app);
     try {
-      await signOut(auth);
-      console.log('User signed out successfully');
-
-     router.push('/login');
+      deleteCookie('jwtToken');
+      router.push('/login');
 
     } catch (error) {
       //@ts-ignore
