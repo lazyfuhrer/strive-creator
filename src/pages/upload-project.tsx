@@ -89,7 +89,7 @@ export default function UploadProject() {
                             <Flex align={'center'} justify={'space-between'} fontWeight={400}>
                                 <Flex gap={2}>
                                     <Icon as={MdAttachMoney} w={'25px'} h={'25px'} />
-                                    <Text>Choose Amount</Text>
+                                    <Text>Enter Amount</Text>
                                 </Flex>
                                 <Icon as={Checkmark} w={'25px'} h={'25px'} />
                             </Flex>
