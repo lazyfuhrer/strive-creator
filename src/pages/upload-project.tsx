@@ -2,12 +2,13 @@ import Layout from "@/components/Layout";
 import { Checkmark, Upload, VideoCall, Write } from "@/icons/strive";
 import { getMaticExchangeRates } from "@/utils/actions";
 import { Button, Center, Flex, Icon, IconButton, Image, Input, InputGroup, InputLeftAddon, Select, Text, Textarea } from "@chakra-ui/react";
-import { useState } from "react";
+import { ChangeEvent, useRef, useState } from "react";
 import { FiUploadCloud, FiUpload } from "react-icons/fi";
 import { MdAttachMoney } from "react-icons/md";
 
 export default function UploadProject() {
     const [usdValueToConvert, setUsdValueToConvert] = useState(0);
+    const fileInputRef = useRef<HTMLInputElement>(null);
     
     const handleConvertClick = async () => {
       const result = await getMaticExchangeRates(usdValueToConvert);
@@ -17,6 +18,22 @@ export default function UploadProject() {
         console.error('Failed to retrieve MATIC value');
       }
     };
+
+    
+
+    const handleFileUpload = () => {
+    // Trigger the file input click event
+    if (fileInputRef.current) {
+        fileInputRef.current.click();
+    }
+    };
+
+    const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const selectedFile = event.target.files?.[0];
+    // Handle the selected file as needed
+    console.log('Selected file:', selectedFile);
+    };
+
   return (
     <Layout>
         <Flex direction={'column'} p={5}>
@@ -39,7 +56,8 @@ export default function UploadProject() {
                     <Center display={'inline-flex'} flexDir={'column'} gap={'15px'} w={['auto', '777px']} h={['auto', '217px']} p={'24px'} flexShrink={0} border={'1px dashed #2D333E'} bg={'rgba(13, 13, 13, 0.13)'} borderRadius={'4px'}>
                         <Icon w={'24px'} h={'24px'} as={FiUploadCloud}/>
                         <Text color={'#DCE0E6'} fontSize={{base: '12px', md: '15px'}} fontWeight={400} textAlign={'center'} alignSelf={'stretch'}>Browse and chose the files you want to upload from your computer</Text>
-                        <IconButton size={{base: 'xs', md: 'auto'}} aria-label='logo' bg={'transparent'} icon={<Image src="/upload/add.svg" alt="logo" />} _hover={{ bg: 'transparent' }} />
+                        <input type="file" ref={fileInputRef} style={{ display: 'none' }} onChange={handleFileChange} />
+                        <IconButton onClick={handleFileUpload} size={{base: 'xs', md: 'auto'}} aria-label='logo' bg={'transparent'} icon={<Image src="/upload/add.svg" alt="logo" />} _hover={{ bg: 'transparent' }} />
                     </Center>
 
                     <Button
