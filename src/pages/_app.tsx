@@ -37,7 +37,7 @@ const wagmiConfig = createConfig({
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <WagmiConfig config={wagmiConfig}>
-      <RainbowKitProvider chains={chains}>
+      <RainbowKitProvider chains={chains} coolMode>
         <ChakraProvider toastOptions={{ defaultOptions: { position: 'top-right' } }}>
           <main className={tomorrow.className}>
             <Component {...pageProps} />

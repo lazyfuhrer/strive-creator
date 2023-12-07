@@ -22,6 +22,7 @@ import {
   MenuList,
   MenuItem,
   useToast,
+  MenuDivider,
 } from '@chakra-ui/react'
 import { Urbanist } from 'next/font/google'
 import {
@@ -220,7 +221,7 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
     </Flex>
 
       
-            
+    <ConnectButton accountStatus={'avatar'} showBalance={false} /> 
       <HStack spacing={{ base: '3', md: '6' }}
       //bg={'blue'}
       >
@@ -239,15 +240,15 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
               width={{ base: '100%', md: '339.674px' }}
             />
         </InputGroup>
+        
         <IconButton size="lg" bg={'transparent'} variant="ghost" aria-label="open menu" icon={<Image src="/navbar/bell.svg" alt="bell" />} />
         <Menu>
           <MenuButton>
             <Avatar size={'sm'} src={ '/navbar/avatar.svg'} />
           </MenuButton>
-          <MenuList>
-            
-            <ConnectButton />
-            <MenuItem onClick={() => router.push('/upload')}>Profile</MenuItem>
+          <MenuList bg={'black'}>
+            <MenuDivider />
+            <MenuItem bg={'rgba(0, 0, 10, 0.9)'} onClick={() => router.push('/upload')}>Profile</MenuItem>
             <MenuItem onClick={handleSignOut}>Sign out</MenuItem>
           </MenuList>
         </Menu>
