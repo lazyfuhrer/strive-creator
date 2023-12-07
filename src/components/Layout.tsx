@@ -246,9 +246,8 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
           <MenuButton>
             <Avatar size={'sm'} src={ '/navbar/avatar.svg'} />
           </MenuButton>
-          <MenuList bg={'black'}>
-            <MenuDivider />
-            <MenuItem bg={'rgba(0, 0, 10, 0.9)'} onClick={() => router.push('/upload')}>Profile</MenuItem>
+          <MenuList>
+            <MenuItem onClick={() => router.push('/upload')}>Profile</MenuItem>
             <MenuItem onClick={handleSignOut}>Sign out</MenuItem>
           </MenuList>
         </Menu>
