@@ -11,6 +11,7 @@ export default function UploadProject() {
     const [usdValueToConvert, setUsdValueToConvert] = useState(0);
     const fileInputRef = useRef<HTMLInputElement>(null);
     const [selectedFileType, setSelectedFileType] = useState<string | null>(null);
+    const [uploadedFileName, setUploadedFileName] = useState<string | null>(null);
     
     const handleConvertClick = async () => {
       const result = await getMaticExchangeRates(usdValueToConvert);
@@ -37,6 +38,10 @@ export default function UploadProject() {
         if (allowedFileTypes.some(type => selectedFile.name.endsWith(type))) {
             // Handle the selected file as needed
             console.log('Selected file:', selectedFile);
+            // Set the uploaded file name
+            setUploadedFileName(selectedFile.name);
+            // Clear any previous error
+            toast.closeAll();
         } else {
             toast({
             title: 'Error',
@@ -59,6 +64,7 @@ export default function UploadProject() {
     };
     const handleFileTypeChange = (event: ChangeEvent<HTMLSelectElement>) => {
         setSelectedFileType(event.target.value);
+        setUploadedFileName(null);
     };
 
     return (
@@ -83,7 +89,7 @@ export default function UploadProject() {
 
                         <Center display={'inline-flex'} flexDir={'column'} gap={'15px'} w={['auto', '777px']} h={['auto', '217px']} p={'24px'} flexShrink={0} border={'1px dashed #2D333E'} bg={'rgba(13, 13, 13, 0.13)'} borderRadius={'4px'}>
                             <Icon w={'24px'} h={'24px'} as={FiUploadCloud}/>
-                            <Text color={'#DCE0E6'} fontSize={{base: '12px', md: '15px'}} fontWeight={400} textAlign={'center'} alignSelf={'stretch'}>Browse and chose the files you want to upload from your computer</Text>
+                            <Text color={'#DCE0E6'} fontSize={{ base: '12px', md: '15px' }} fontWeight={400} textAlign={'center'} alignSelf={'stretch'}>{uploadedFileName || 'Browse and chose the files you want to upload from your computer'}</Text>
                             <input type="file" ref={fileInputRef} style={{ display: 'none' }} accept={selectedFileType ? `.${selectedFileType}` : undefined} onChange={handleFileChange} />
                             <IconButton onClick={handleFileUpload} size={{base: 'xs', md: 'auto'}} aria-label='logo' bg={'transparent'} icon={<Image src="/upload/add.svg" alt="logo" />} _hover={{ bg: 'transparent' }} />
                         </Center>
