@@ -68,6 +68,7 @@ const LinkItems: Array<LinkItemProps> = [
 const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
   return (
     <Box
+      bg={{base: 'rgba(0, 0, 10, 0.9)', md: 'initial'}}
       transition="3s ease"
       borderRightWidth="1px"
       w={{ base: 'full', md: 60 }}
@@ -218,7 +219,7 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
         </Box>
     </Flex>
 
-      <ConnectButton />
+      
             
       <HStack spacing={{ base: '3', md: '6' }}
       //bg={'blue'}
@@ -244,6 +245,8 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
             <Avatar size={'sm'} src={ '/navbar/avatar.svg'} />
           </MenuButton>
           <MenuList>
+            
+            <ConnectButton />
             <MenuItem onClick={() => router.push('/upload')}>Profile</MenuItem>
             <MenuItem onClick={handleSignOut}>Sign out</MenuItem>
           </MenuList>
