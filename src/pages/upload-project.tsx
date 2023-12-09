@@ -1,6 +1,7 @@
 import Layout from "@/components/Layout";
 import { Checkmark, Upload, VideoCall, Write } from "@/icons/strive";
 import { getMaticExchangeRates } from "@/utils/actions";
+import { UploadImageToS3 } from "@/utils/uploadToS3";
 import { Button, Center, Flex, Icon, IconButton, Image, Input, InputGroup, InputLeftAddon, Select, Text, Textarea, useToast } from "@chakra-ui/react";
 import { ChangeEvent, useRef, useState } from "react";
 import { FiUploadCloud, FiUpload } from "react-icons/fi";
@@ -25,6 +26,34 @@ export default function UploadProject() {
         // Trigger the file input click event
         if (fileInputRef.current) {
           fileInputRef.current.click();
+        }
+      };
+
+      const handleFileUploadS3 = async () => {
+        if (fileInputRef.current) {
+          const selectedFile = fileInputRef.current.files?.[0];
+          if (selectedFile) {
+            try {
+              const location = await UploadImageToS3(selectedFile);
+              console.log(location);
+              toast({
+                title: 'Success',
+                description: 'File uploaded successfully',
+                status: 'success',
+                duration: 5000,
+                isClosable: true,
+              });
+            } catch (error) {
+              console.error('Error uploading file:', error);
+              toast({
+                title: 'Error',
+                description: 'Failed to upload file',
+                status: 'error',
+                duration: 5000,
+                isClosable: true,
+              });
+            }
+          }
         }
       };
     const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -105,6 +134,7 @@ export default function UploadProject() {
                             leftIcon={<FiUpload />}
                             bg='var(--2, linear-gradient(90deg, #5BB3EB 0.13%, #D467E2 99.88%))'
                             color={'white'}
+                            onClick={handleFileUploadS3}
                         >
                             Upload Content
                         </Button>
