@@ -1,7 +1,7 @@
 import Layout from "@/components/Layout";
 import TrendingProjectCard from "@/components/TrendingProjectCard";
 import { Camera, PersonS } from "@/icons/strive";
-import { Box, Flex, Icon, Image, Text, Wrap, WrapItem } from "@chakra-ui/react";
+import { Flex, Icon, Image, Text, Wrap, WrapItem } from "@chakra-ui/react";
 
 export default function Explore() {
   const cardCount = 12;
