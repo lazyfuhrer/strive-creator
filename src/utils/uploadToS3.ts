@@ -12,10 +12,9 @@ const s3 = new AWS.S3();
 export const UploadImageToS3 = async (
   file: File,
 ) => {
-  const bucketName = process.env.NEXT_PUBLIC_AWS_S3_BUCKET_NAME as string;
 
   const params: AWS.S3.PutObjectRequest = {
-    Bucket: bucketName,
+    Bucket: process.env.NEXT_PUBLIC_AWS_S3_BUCKET_NAME as string,
     Key: `${Date.now()}.${file.name}`,
     Body: file,
   };

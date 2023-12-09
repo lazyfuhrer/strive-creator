@@ -1,8 +1,24 @@
 import Layout from "@/components/Layout";
 import { Box, Button, Center, Flex, Icon, IconButton, Image, Input, Select, Text, Textarea } from "@chakra-ui/react";
+import { ChangeEvent, useRef, useState } from "react";
 import { FiUploadCloud } from "react-icons/fi";
 
 export default function Upload() {
+  const fileInputRef = useRef<HTMLInputElement>(null);
+  const [uploadedFileName, setUploadedFileName] = useState<string | null>(null);
+  const handleFileUpload = () => {
+    // Trigger the file input click event
+    if (fileInputRef.current) {
+      fileInputRef.current.click();
+    }
+  };
+  const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const selectedFile = event.target.files?.[0];
+    if (selectedFile) {
+      console.log('Selected file:', selectedFile);
+      setUploadedFileName(selectedFile.name);
+    }
+  };
   return (
     <Layout>
       <Box p={5} ml={{base: 0, md: 4}}>
@@ -11,8 +27,9 @@ export default function Upload() {
           <Text mb={['10px', '17px']} color="var(--White, #FFF)" fontSize={['20px', '27.174px']} fontWeight={500} sx={{ 'text-edge': 'cap', 'leading-trim': 'both' }}>Upload profile photo</Text>
           <Center display={'inline-flex'} flexDir={'column'} gap={'15px'} w={['100%', '286px']} h={['150px', '201px']} flexShrink={0} border={'2px dashed rgba(255, 255, 255, 0.34)'} borderRadius={'15px'}>
             <Icon w={'24px'} h={'24px'} as={FiUploadCloud}/>
-            <Text maxW={'217px'} color={'#DCE0E6'} fontSize={{base: '12px', md: '14px'}} fontWeight={300} textAlign={'center'}>Browse and chose the files you want to upload from your computer</Text>
-            <IconButton size={{base: 'xs', md: 'auto'}} aria-label='logo' bg={'transparent'} icon={<Image src="/upload/add.svg" alt="logo" />} _hover={{ bg: 'transparent' }} />
+            <Text maxW={'217px'} color={'#DCE0E6'} fontSize={{base: '12px', md: '14px'}} fontWeight={300} textAlign={'center'}>{uploadedFileName || "Browse and chose the files you want to upload from your computer"}</Text>
+            <input type="file" ref={fileInputRef} style={{ display: 'none' }} onChange={handleFileChange} />
+            <IconButton onClick={handleFileUpload} size={{base: 'xs', md: 'auto'}} aria-label='logo' bg={'transparent'} icon={<Image src="/upload/add.svg" alt="logo" />} _hover={{ bg: 'transparent' }} />
           </Center>
         </Box>
 

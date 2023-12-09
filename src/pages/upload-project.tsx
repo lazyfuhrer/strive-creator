@@ -27,75 +27,74 @@ export default function UploadProject() {
         if (fileInputRef.current) {
           fileInputRef.current.click();
         }
-      };
+    };
 
-      const handleFileUploadS3 = async () => {
+    const handleFileUploadS3 = async () => {
         if (fileInputRef.current) {
-          const selectedFile = fileInputRef.current.files?.[0];
-          if (selectedFile) {
-            try {
-              const location = await UploadImageToS3(selectedFile);
-              console.log(location);
-              toast({
-                title: 'Success',
-                description: 'File uploaded successfully',
-                status: 'success',
-                duration: 5000,
-                isClosable: true,
-              });
-            } catch (error) {
-              console.error('Error uploading file:', error);
-              toast({
-                title: 'Error',
-                description: 'Failed to upload file',
-                status: 'error',
-                duration: 5000,
-                isClosable: true,
-              });
+            const selectedFile = fileInputRef.current.files?.[0];
+            if (selectedFile) {
+                try {
+                    const location = await UploadImageToS3(selectedFile);
+                    console.log(location);
+                    toast({
+                        title: 'Success',
+                        description: 'File uploaded successfully',
+                        status: 'success',
+                        duration: 5000,
+                        isClosable: true,
+                    });
+                } catch (error) {
+                    console.error('Error uploading file:', error);
+                    toast({
+                        title: 'Error',
+                        description: 'Failed to upload file',
+                        status: 'error',
+                        duration: 5000,
+                        isClosable: true,
+                    });
+                }
             }
-          }
         }
-      };
+    };
     const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
-    const selectedFile = event.target.files?.[0];
-    // Check if a file is selected
-    if (selectedFile) {
-        // Check if a file type is selected
-        if (selectedFileType) {
-        const allowedFileTypes = [`.${selectedFileType}`];
-        // Check if the selected file type matches the chosen option
-        if (allowedFileTypes.some(type => selectedFile.name.endsWith(type))) {
-            // Handle the selected file as needed
-            console.log('Selected file:', selectedFile);
-            // Set the uploaded file name
-            setUploadedFileName(selectedFile.name);
-            // Clear any previous error
-            toast.closeAll();
-        } else {
-            toast({
-            title: 'Error',
-            description: `Invalid file type selected`,
-            status: 'error',
-            duration: 5000,
-            isClosable: true,
-            });
+        const selectedFile = event.target.files?.[0];
+        // Check if a file is selected
+        if (selectedFile) {
+            // Check if a file type is selected
+            if (selectedFileType) {
+                const allowedFileTypes = [`.${selectedFileType}`];
+                // Check if the selected file type matches the chosen option
+                if (allowedFileTypes.some(type => selectedFile.name.endsWith(type))) {
+                    // Handle the selected file as needed
+                    console.log('Selected file:', selectedFile);
+                    // Set the uploaded file name
+                    setUploadedFileName(selectedFile.name);
+                    // Clear any previous error
+                    toast.closeAll();
+                } else {
+                    toast({
+                        title: 'Error',
+                        description: `Invalid file type selected`,
+                        status: 'error',
+                        duration: 5000,
+                        isClosable: true,
+                    });
+                }
+            } else {
+                toast({
+                    title: 'Error',
+                    description: `Please choose a file type`,
+                    status: 'error',
+                    duration: 5000,
+                    isClosable: true,
+                });
+            }
         }
-        } else {
-            toast({
-                title: 'Error',
-                description: `Please choose a file type`,
-                status: 'error',
-                duration: 5000,
-                isClosable: true,
-            });
-        }
-    }
     };
     const handleFileTypeChange = (event: ChangeEvent<HTMLSelectElement>) => {
         setSelectedFileType(event.target.value);
         setUploadedFileName(null);
     };
-
     return (
         <Layout>
             <Flex direction={'column'} p={5}>
@@ -234,4 +233,4 @@ export default function UploadProject() {
             </Flex>
         </Layout>
     )
-    };
+};
