@@ -27,6 +27,7 @@ export default function Login() {
     email: '',
     password: '',
   });
+  const [isFormLoading, setIsFormLoading] = useState(false);
 
   const handleInputChange = (fieldName: keyof typeof user, value: string) => {
     setUser((prevUser) => ({
@@ -36,6 +37,7 @@ export default function Login() {
   };  
 
   const handleLogIn = async () => {
+    setIsFormLoading(true);
     const auth = getAuth(app);
     // Check if any required field is empty
     const requiredFields: Array<keyof typeof user> = ['email', 'password'];
@@ -49,11 +51,12 @@ export default function Login() {
           duration: 5000,
           isClosable: true,
         });
+        setIsFormLoading(false);
         return;
       }
     }
   
-    console.log('Signing in user:', user);
+    //console.log('Signing in user:', user);
 
     try {
       const userCredential = await signInWithEmailAndPassword( auth, user.email, user.password );
@@ -87,6 +90,9 @@ export default function Login() {
       });
       return;
       // Handle the error as needed...
+    }
+    finally {
+      setIsFormLoading(false);
     }
   
   };  
@@ -154,7 +160,7 @@ export default function Login() {
                 <Link as={NextLink} href='/reset' color={'#5BB3EB'}>Forgot password?</Link>
               </Stack> */}
               <Button
-                loadingText="Submitting"
+                isLoading={isFormLoading}
                 h={{ base: '36px', md: '44px' }}
                 borderRadius={'5px'}
                 fontSize={{ base: '18px', md: '20px' }}
