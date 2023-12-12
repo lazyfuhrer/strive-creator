@@ -9,18 +9,22 @@ import { MdAttachMoney } from "react-icons/md";
 
 export default function UploadProject() {
     const toast = useToast();
-    const [usdValueToConvert, setUsdValueToConvert] = useState(0);
+    const [usdValueToConvert, setUsdValueToConvert] = useState<number | null>(null);
     const fileInputRef = useRef<HTMLInputElement>(null);
     const [selectedFileType, setSelectedFileType] = useState<string | null>(null);
     const [uploadedFileName, setUploadedFileName] = useState<string | null>(null);
     
     const handleConvertClick = async () => {
-      const result = await getMaticExchangeRates(usdValueToConvert);
-      if (result !== null) {
-        console.log(result)
-      } else {
-        console.error('Failed to retrieve MATIC value');
-      }
+        if (usdValueToConvert !== null && !isNaN(usdValueToConvert)) {
+          const result = await getMaticExchangeRates(usdValueToConvert);
+          if (result !== null) {
+            console.log(result);
+          } else {
+            console.error('Failed to retrieve MATIC value');
+          }
+        } else {
+          console.error('Invalid USD value to convert');
+        }
     };
     const handleFileUpload = () => {
         // Trigger the file input click event
@@ -225,7 +229,13 @@ export default function UploadProject() {
                         <Text color="rgba(255, 255, 255, 0.64)" fontSize={['20px', '27.174px']} fontStyle={'normal'} fontWeight={400} sx={{ 'text-edge': 'cap', 'leading-trim': 'both' }}>Amount</Text>
                         <InputGroup>
                             <InputLeftAddon alignItems={'center'} justifyContent={'center'} h={['55px', '79px']} w={'79px'} fontSize={'20px'}>$</InputLeftAddon>
-                            <Input type="number" value={usdValueToConvert} onChange={(e) => setUsdValueToConvert(parseFloat(e.target.value))} placeholder="Enter amount" _placeholder={{ color: 'var(--grayscale-pale-gray, #AAA)', fontSize: {base: '15px', md: '20px'}, fontWeight: 400, fontStyle: 'normal'}} h={['55px', '79px']} borderRadius={'10px'} borderBottom={'1px solid #676767'} bg={'rgba(32, 32, 32, 0.41)'} backdropFilter={'blur(50.45000076293945px)'}/>
+                            <Input type="number" value={usdValueToConvert !== null ? usdValueToConvert : ''}
+                                onChange={(e) => {
+                                    const newValue = parseFloat(e.target.value);
+                                    setUsdValueToConvert(isNaN(newValue) ? null : newValue);
+                                }}
+                                placeholder="Enter amount" _placeholder={{ color: 'var(--grayscale-pale-gray, #AAA)', fontSize: {base: '15px', md: '20px'}, fontWeight: 400, fontStyle: 'normal'}} h={['55px', '79px']} borderRadius={'10px'} borderBottom={'1px solid #676767'} bg={'rgba(32, 32, 32, 0.41)'} backdropFilter={'blur(50.45000076293945px)'}
+                            />
                         </InputGroup>
                     </Flex>
                 </Flex>
