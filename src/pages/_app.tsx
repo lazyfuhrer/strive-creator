@@ -17,7 +17,7 @@ const tomorrow = Tomorrow({ weight: ['300', '400', '500', '600'], subsets: ['lat
 const { chains, publicClient } = configureChains(
   [polygonMumbai],
   [
-    alchemyProvider({ apiKey: process.env.NEXT_PUBLIC_ALCHEMY_API_KEY || ' ' }),
+    alchemyProvider({ apiKey: process.env.NEXT_PUBLIC_ALCHEMY_API_KEY as string }),
     publicProvider()
   ]
 );
