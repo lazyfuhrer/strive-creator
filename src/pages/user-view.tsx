@@ -5,7 +5,7 @@ import { Avatar, Box, Button, Flex, Icon, Image, Progress, Text } from "@chakra-
 export default function UserView() {
   return (
     <Layout>
-      <Flex direction={'column'} p={5} gap={5}>
+      <Flex direction={'column'} p={5} gap={7}>
         {/* <Flex
           w={'auto'}
           h={'444px'}
@@ -16,14 +16,14 @@ export default function UserView() {
           backgroundPosition="center"
         >
         </Flex> */}
-        <Image src="/user-view/cover.svg" alt="cover" h={'444px'} backgroundSize={'cover'} bgPosition={'center'} bgColor={'red'} />
+        <Image src="/user-view/cover.svg" alt="cover" backgroundSize={'cover'} bgPosition={'center'} />
 
-        <Flex direction={'column'} gap={5}>
+        <Flex direction={'column'} gap={7}>
 
           <Flex direction={'column'} gap={3}>
             <Flex justify={'space-between'} align={'center'}>
               <Text color="var(--White, #FFF)" fontSize={['27px', '32px']} fontWeight={500} fontStyle={'normal'} sx={{ 'text-edge': 'cap', 'leading-trim': 'both' }}>Name of this project</Text>
-              <Flex align={'center'} justify={'flex-start'} h={'34px'} gap={'20px'} fontSize={'19.926px'}>
+              <Flex align={'center'} h={'34px'} gap={'20px'} fontSize={'19.926px'}>
                 <Flex gap={1}>
                   <Icon as={Comment} w="27.896px" h="27.896px" />
                   <Text color="rgba(255, 255, 255, 0.64)" fontStyle="normal" fontWeight={300}>23</Text>
@@ -38,24 +38,24 @@ export default function UserView() {
             <Text maxW={{base: 'auto', md: '782px'}} color="var(--White, #FFF)" fontSize={['11px', '16px']} fontWeight={300} fontStyle={'normal'}>Lorem ipsum dolor sit amet consectetur. Enim amet ultrices risus velit suspendisse vitae laoreet. Etiam enim turpis velit cursus. Ipsum morbi aenean magna non erat. Nibh tortor pharetra purus quis mi.</Text>
           </Flex>
 
-          <Flex direction={{base: 'column', md: 'initial'}} gap={3}>
-            <Avatar bg={'lightgray 50% / cover no-repeat, #D9D9D9'} w={'46px'} h={'46px'} borderRadius={'46px'} src="/user-view/user-1.svg" />
-            <Flex direction={'column'} >
-              <Flex gap={5} align={'center'}>
-                <Text textAlign={'center'} color="var(--White, #FFF)" fontSize={['13px', '18.502px']} fontWeight={400} fontStyle={'normal'} sx={{ 'text-edge': 'cap', 'leading-trim': 'both' }}>Andy Ledenov</Text>
-                <Button w={'50px'} h={'19px'} borderRadius={'43px'} border={'1px solid var(--2, #5BB3EB)'} color="var(--White, #FFF)" fontSize={'9.251px'} fontWeight={400} fontStyle={'normal'}>Follow</Button>
+          <Flex direction={{base: 'column', md: 'initial'}} gap={{base: 1, md: 3}} mt={3} align={'center'} >
+            <Avatar bg={'lightgray 50% / cover no-repeat, #D9D9D9'} w={{base: '100px', md: '46px'}} h={{base: '100px', md: '46px'}} borderRadius={{base: '100px', md: '46px'}} src="/user-view/user-1.svg" />
+            <Flex direction={'column'} align={{base: 'center', md: 'normal'}} gap={{base: 3, md: 0}}>
+              <Flex direction={{base: 'column', md: 'initial'}} gap={{base: 2, md: 5}} align={{base: 'center', md: 'center'}}>
+                <Text color="var(--White, #FFF)" fontSize={['25px', '18.502px']} fontWeight={400} fontStyle={'normal'} sx={{ 'text-edge': 'cap', 'leading-trim': 'both' }}>Andy Ledenov</Text>
+                <Button w={{base: '120px', md: '50px'}} h={{base: '29px', md: '19px'}} borderRadius={'43px'} border={'1px solid var(--2, #5BB3EB)'} color="var(--White, #FFF)" fontSize={{base: '13px', md: '9.251px'}} fontWeight={400} fontStyle={'normal'}>Follow</Button>
               </Flex>
               <Flex align={'center'} gap={2}>
                 <Icon as={PersonS} opacity={'0.5'} />
-                <Text color="var(--White, #FFF)" fontSize={['5px', '9.251px']} fontStyle={'normal'} fontWeight={400} opacity={'0.5'}>230 Followers</Text>
+                <Text color="var(--White, #FFF)" fontSize={['11px', '9.251px']} fontStyle={'normal'} fontWeight={400} opacity={'0.5'}>230 Followers</Text>
               </Flex>      
             </Flex>
           </Flex>
 
         </Flex>
 
-        <Flex justify={'space-between'} p={8} h={{base: 'auto', md: '231px'}} borderRadius={'20px'} borderBottom={'1px solid #676767'} bg={'rgba(32, 32, 32, 0.41)'} backdropFilter={'blur(50.45000076293945px)'}>
-          <Flex direction={'column'} w={'65%'} gap={2}>
+        <Flex mt={5} justify={'space-between'} p={8} h={{base: 'auto', md: '231px'}} borderRadius={'20px'} borderBottom={'1px solid #676767'} bg={'rgba(32, 32, 32, 0.41)'} backdropFilter={'blur(50.45000076293945px)'}>
+          <Flex direction={'column'} w={{base: '100%', md: '65%'}} gap={2}>
             <Text color="var(--White, #FFF)" fontSize={['30px', '35.915px']} fontWeight={400} fontStyle={'normal'} sx={{ 'text-edge': 'cap', 'leading-trim': 'both' }}>Total Capital Raised</Text>
             <Flex justify={'space-between'} align={'center'}>
               <Text color="var(--White, #FFF)" fontSize={['21px', '26.282px']} fontWeight={400} fontStyle={'normal'} bg={'var(--2, linear-gradient(90deg, #5BB3EB 0.13%, #D467E2 99.88%))'} bgClip={'text'} sx={{WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent'}}>$ 230.00</Text>
@@ -75,13 +75,12 @@ export default function UserView() {
                   <Text color="#494949"  fontStyle={'normal'} fontWeight={400}>None</Text>
               </Flex>
               <Flex align={'center'} gap={2}>
-                <Icon as={Badge_1} w={'21.253px'} h={'21.253px'}/>
+                <Icon as={Badge_2} w={'21.253px'} h={'21.253px'} color={'red'}/>
                 <Text color="#494949"  fontStyle={'normal'} fontWeight={400} >Bronze</Text>
               </Flex>
             </Flex>    
           </Flex>
-
-        <Image display={{base: 'none', md: 'initial'}} src="/user-view/vault.svg" alt="vault" />
+          <Image display={{base: 'none', md: 'initial'}} src="/user-view/vault.svg" alt="vault" />
         </Flex>
 
       </Flex>
