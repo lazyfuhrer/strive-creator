@@ -23,6 +23,7 @@ import {
   MenuItem,
   useToast,
   MenuDivider,
+  Center,
 } from '@chakra-ui/react'
 import { Urbanist } from 'next/font/google'
 import {
@@ -163,7 +164,7 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
       alignItems="center"
       borderBottomWidth="1px"
       justifyContent={{ base: 'space-between', md: 'flex-end' }}
-      //gap={52}
+      //gap={60}
       {...rest}>
         
       <IconButton
@@ -174,6 +175,9 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
         icon={<FiMenu />}
       />
 
+    <Flex w={'85%'} justify={{base: 'flex-end', md: 'space-between'}}
+    //bg={'yellowgreen'}
+    >
     <Flex
         //bg={'green'}
         direction={['column', 'row']}
@@ -182,6 +186,7 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
         h={'auto'}
         align={['initial', 'center']}
         justify={'center'}
+        display={{ base: 'none', md: 'flex' }}
         >
         <Text
             sx={{
@@ -221,39 +226,44 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
     </Flex>
 
       
-    <ConnectButton accountStatus={'avatar'} showBalance={false} /> 
-      <HStack spacing={{ base: '3', md: '6' }}
-      //bg={'blue'}
-      >
-        <InputGroup display={{base: 'none', md: 'inherit'}}>
-            <InputLeftElement pointerEvents='none'>
-              <BsSearch />
-            </InputLeftElement>
-            <Input
-              type="text"
-              placeholder="Search for creators..."
-              _placeholder={{ color: '#898989', fontSize: '11.646px'}}
-              size="md"
-              bg={'#1E1E1E'}
-              borderRadius={'31.056px'}
-              border={'none'}
-              width={{ base: '100%', md: '339.674px' }}
-            />
-        </InputGroup>
-        
-        <IconButton size="lg" bg={'transparent'} variant="ghost" aria-label="open menu" icon={<Image src="/navbar/bell.svg" alt="bell" />} />
-        <Menu>
-          <MenuButton>
-            <Avatar size={'sm'} src={ '/navbar/avatar.svg'} />
-          </MenuButton>
-          <MenuList>
-            <MenuItem onClick={() => router.push('/upload')}>Profile</MenuItem>
-            <MenuItem onClick={handleSignOut}>Sign out</MenuItem>
-          </MenuList>
-        </Menu>
-  
-      </HStack>
+    
+    <HStack spacing={{ base: '1', md: '10' }}>
+      <ConnectButton accountStatus={'avatar'} showBalance={false} /> 
+      
+      <IconButton display={{base: 'flex', md: 'none'}} size="md" bg={'transparent'} variant="ghost" aria-label="open menu" icon={<Image src="/profile/search.svg" alt="bell" />} />
+     
+      
+      <InputGroup display={{base: 'none', md: 'initial'}} w={'auto'}>
+          <InputLeftElement pointerEvents='none'>
+            <BsSearch />
+          </InputLeftElement>
+          <Input
+            type="text"
+            placeholder="Search for creators..."
+            _placeholder={{ color: '#898989', fontSize: '11.646px'}}
+            size="md"
+            bg={'#1E1E1E'}
+            borderRadius={'31.056px'}
+            border={'none'}
+            width={{ base: '100%', md: '339.674px' }}
+          />
+      </InputGroup>
+      
+      <IconButton size="lg" bg={'transparent'} variant="ghost" aria-label="open menu" icon={<Image src="/navbar/bell.svg" alt="bell" />} />
 
+      <Menu>
+        <MenuButton>
+          <Avatar size={'sm'} src={ '/navbar/avatar.svg'} />
+        </MenuButton>
+        <MenuList>
+          <MenuItem onClick={() => router.push('/upload')}>Profile</MenuItem>
+          <MenuItem onClick={handleSignOut}>Sign out</MenuItem>
+        </MenuList>
+      </Menu>
+
+    </HStack>
+
+    </Flex>
     </Flex>
   )
 }
