@@ -7,7 +7,7 @@ export default function UserView() {
     <Layout>
       <Flex direction={'column'} p={5} gap={7}>
         {/* <Flex
-          w={'auto'}
+          w={'full'}
           h={'444px'}
           borderRadius={'10px'}
           //bgSize={'100% 100%'} // or 'contain'
@@ -16,7 +16,7 @@ export default function UserView() {
           backgroundPosition="center"
         >
         </Flex> */}
-        <Image src="/user-view/cover.svg" alt="cover" backgroundSize={'cover'} bgPosition={'center'} />
+        <Image maxH={'444px'} borderRadius={'10px'} src="https://media.raritysniper.com/news/2023/05/01173550/adidas-pharrell-partner-for-doodle-nft-apparel.jpg" alt="cover" backgroundSize={'cover'} bgPosition={'center'} />
 
         <Flex direction={'column'} gap={7}>
 
