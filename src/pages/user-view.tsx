@@ -23,19 +23,30 @@ export default function UserView() {
           <Flex direction={'column'} gap={3}>
             <Flex justify={'space-between'} align={'center'}>
               <Text color="var(--White, #FFF)" fontSize={['27px', '32px']} fontWeight={500} fontStyle={'normal'} sx={{ 'text-edge': 'cap', 'leading-trim': 'both' }}>Name of this project</Text>
-              <Flex align={'center'} h={'34px'} gap={'20px'} fontSize={'19.926px'}>
+              <Flex display={{base:'none', md: 'flex'}} align={'center'} h={'34px'} gap={'20px'} fontSize={'19.926px'}>
                 <Flex gap={1}>
-                  <Icon as={Comment} w="27.896px" h="27.896px" />
+                  <Icon as={Like} w="26.193px" h="26.193px" color={'#E34848'} />
                   <Text color="rgba(255, 255, 255, 0.64)" fontStyle="normal" fontWeight={300}>23</Text>
                 </Flex>
 
                 <Flex gap={1}>
-                  <Icon as={Like} w="26.193px" h="26.193px" color={'#E34848'} />
+                  <Icon as={Comment} w="27.896px" h="27.896px" />
                   <Text color="rgba(255, 255, 255, 0.64)" fontStyle="normal" fontWeight={300}>23</Text>
                 </Flex>
               </Flex>            
             </Flex>
             <Text maxW={{base: 'auto', md: '782px'}} color="var(--White, #FFF)" fontSize={['11px', '16px']} fontWeight={300} fontStyle={'normal'}>Lorem ipsum dolor sit amet consectetur. Enim amet ultrices risus velit suspendisse vitae laoreet. Etiam enim turpis velit cursus. Ipsum morbi aenean magna non erat. Nibh tortor pharetra purus quis mi.</Text>
+            <Flex display={{base:'flex', md: 'none'}} align={'center'} h={'34px'} gap={'20px'} fontSize={'15px'}>
+              <Flex gap={1}>
+                <Icon as={Like} w={{base: "22px", md: "26.193px"}} h={{base: "22px", md: "26.193px"}} color={'#E34848'} />
+                <Text color="rgba(255, 255, 255, 0.64)" fontStyle="normal" fontWeight={300}>23</Text>
+              </Flex>
+
+              <Flex gap={1}>
+                <Icon as={Comment} w={{base: "22px", md: "27.896px"}} h={{base: "22px", md: "27.896px"}} />
+                <Text color="rgba(255, 255, 255, 0.64)" fontStyle="normal" fontWeight={300}>23</Text>
+              </Flex>
+            </Flex>       
           </Flex>
 
           <Flex direction={{base: 'column', md: 'initial'}} gap={{base: 1, md: 3}} mt={3} align={'center'} >
