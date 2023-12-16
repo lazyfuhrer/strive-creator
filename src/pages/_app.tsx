@@ -23,8 +23,8 @@ const { chains, publicClient } = configureChains(
 );
 
 const { connectors } = getDefaultWallets({
-  appName: 'cloakr',
-  projectId: process.env.NEXT_PUBLIC_PROJECT_ID || ' ',
+  appName: process.env.NEXT_PUBLIC_ALCHEMY_APP_NAME as string,
+  projectId: process.env.NEXT_PUBLIC_ALCHEMY_PROJECT_ID as string,
   chains
 });
 
