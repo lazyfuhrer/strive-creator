@@ -6,12 +6,14 @@ import { getAuth, signOut } from "firebase/auth";
 import { useRouter } from "next/router";
 import { BsSearch } from "react-icons/bs";
 import { FiMenu } from "react-icons/fi";
+import { useAccount } from "wagmi";
 
 interface NavbarProps extends FlexProps {
   onOpen: () => void
 }
 
 export default function Header({ onOpen, ...rest }: NavbarProps) {
+  const { isConnected } = useAccount();
   const router = useRouter();
   const toast = useToast();
   
@@ -41,7 +43,7 @@ export default function Header({ onOpen, ...rest }: NavbarProps) {
       position={'fixed'}
       w={'100%'}
       ml={{ base: 0, md: '60' }}
-      px={{ base: 4, md: 4 }}
+      px={{ base: 4, md: 5 }}
       height="20"
       alignItems="center"
       borderBottomWidth="1px"
@@ -59,7 +61,7 @@ export default function Header({ onOpen, ...rest }: NavbarProps) {
 
     
     <Flex
-        bg={'green'}
+        //bg={'green'}
         direction={['column', 'row']}
         gap={{base: 0, md: 5}}
         w={['40%', '352px']}
@@ -107,7 +109,9 @@ export default function Header({ onOpen, ...rest }: NavbarProps) {
 
       
     
-    <HStack spacing={{ base: '1', md: '10' }} bg={'red'}>
+    <HStack spacing={{ base: '0', md: '10' }} w={ isConnected ? '850px' : '930px' } justify={{base: 'space-evenly', md: 'normal'}}
+      //bg={'red'} 
+    >
       <ConnectButton accountStatus={'avatar'} showBalance={false} /> 
       
       <IconButton display={{base: 'flex', md: 'none'}} size="md" bg={'transparent'} variant="ghost" aria-label="open menu" icon={<Image src="/profile/search.svg" alt="bell" />} />
@@ -142,8 +146,6 @@ export default function Header({ onOpen, ...rest }: NavbarProps) {
       </Menu>
 
     </HStack>
-
-    
     </Flex>
   )
 };
