@@ -35,14 +35,17 @@ export default function Header({ onOpen, ...rest }: NavbarProps) {
   };
   return (
     <Flex
-      //bg={'red'}
-      //zIndex={'999'}
-      ml={{ base: 0, md: 'auto' }}
+      bg={'rgba(0, 0, 10, 0.9)'}
+      backdropFilter={'blur(8.149999618530273px)'}
+      zIndex={'99'}
+      position={'fixed'}
+      w={'100%'}
+      ml={{ base: 0, md: '60' }}
       px={{ base: 4, md: 4 }}
       height="20"
       alignItems="center"
       borderBottomWidth="1px"
-      justifyContent={{ base: 'space-between', md: 'flex-end' }}
+      justifyContent={{ base: 'space-between', md: 'space-between' }}
       //gap={60}
       {...rest}>
         
@@ -54,11 +57,9 @@ export default function Header({ onOpen, ...rest }: NavbarProps) {
         icon={<FiMenu />}
       />
 
-    <Flex w={'85%'} justify={{base: 'flex-end', md: 'space-between'}}
-    //bg={'yellowgreen'}
-    >
+    
     <Flex
-        //bg={'green'}
+        bg={'green'}
         direction={['column', 'row']}
         gap={{base: 0, md: 5}}
         w={['40%', '352px']}
@@ -106,7 +107,7 @@ export default function Header({ onOpen, ...rest }: NavbarProps) {
 
       
     
-    <HStack spacing={{ base: '1', md: '10' }}>
+    <HStack spacing={{ base: '1', md: '10' }} bg={'red'}>
       <ConnectButton accountStatus={'avatar'} showBalance={false} /> 
       
       <IconButton display={{base: 'flex', md: 'none'}} size="md" bg={'transparent'} variant="ghost" aria-label="open menu" icon={<Image src="/profile/search.svg" alt="bell" />} />
@@ -142,7 +143,7 @@ export default function Header({ onOpen, ...rest }: NavbarProps) {
 
     </HStack>
 
-    </Flex>
+    
     </Flex>
   )
 };

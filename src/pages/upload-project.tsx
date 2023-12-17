@@ -101,7 +101,7 @@ export default function UploadProject() {
     };
     return (
         <Layout>
-            <Flex direction={'column'} p={5}>
+            <Flex mt={20} direction={'column'} p={5}>
 
                 <Flex direction={{base: 'column', md: 'initial'}} justify={'space-between'} gap={10}>
                     

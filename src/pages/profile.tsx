@@ -28,7 +28,7 @@ export default function Profile() {
   const cardIndices = Array.from({ length: cardCount }, (_, index) => index);
   return (
     <Layout>
-      <Flex justify={"space-between"} p={{base: 0, md: 7}} pr={{base: 0, md: 12}} pl={{ base: 0, md: 2 }} direction={{base: 'column', md: 'initial'}}>
+      <Flex mt={20} justify={"space-between"} p={{base: 0, md: 7}} pr={{base: 0, md: 12}} pl={{ base: 0, md: 2 }} direction={{base: 'column', md: 'initial'}}>
         <Flex p={{base: 5, md: 0}} gap={"17px"} direction={{base: 'column', md: 'initial'}} w={{base: 'auto', md: 'initial'}}>
           <Box
             bgImage={"/profile/andy.svg"}

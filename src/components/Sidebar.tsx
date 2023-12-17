@@ -21,6 +21,7 @@ export default function Sidebar({ onClose, ...rest }: SidebarProps) {
     return (
         <Box
           bg={{base: 'rgba(0, 0, 10, 0.9)', md: 'initial'}}
+          zIndex={'99'}
           transition="3s ease"
           borderRightWidth="1px"
           w={{ base: 'full', md: 60 }}

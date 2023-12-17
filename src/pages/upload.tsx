@@ -21,7 +21,7 @@ export default function Upload() {
   };
   return (
     <Layout>
-      <Box p={5} ml={{base: 0, md: 4}}>
+      <Box mt={20} p={5} ml={{base: 0, md: 4}}>
 
         <Box>
           <Text mb={{base: '10px', md: '17px'}} color="var(--White, #FFF)" fontSize={{base: '20px', md: '27.174px'}} fontWeight={500} sx={{ 'text-edge': 'cap', 'leading-trim': 'both' }}>Upload profile photo</Text>

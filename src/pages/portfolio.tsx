@@ -5,7 +5,7 @@ import { Avatar, Flex, Icon, Text } from "@chakra-ui/react";
 export default function Portfolio() {
   return (
     <Layout>
-        <Flex direction="column" p={5}>
+        <Flex mt={20} direction="column" p={5}>
             <Flex direction="column">
                 <Text opacity={'0.5'} color="var(--White, #FFF)" fontSize={{base: '20px', md: '24px'}} fontStyle={'normal'} fontWeight={400} sx={{ 'text-edge': 'cap', 'leading-trim': 'both' }}>My portfolio</Text>
                 <Flex gap={4} mt={10} direction={{base: 'column', md: 'initial'}}>

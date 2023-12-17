@@ -5,7 +5,7 @@ import { Avatar, Box, Button, Flex, Icon, Image, Progress, Text } from "@chakra-
 export default function UserView() {
   return (
     <Layout>
-      <Flex direction={'column'} p={5} gap={7}>
+      <Flex mt={20} direction={'column'} p={5} gap={7}>
         {/* <Flex
           w={'full'}
           h={'444px'}

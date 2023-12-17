@@ -12,7 +12,7 @@ export default function Explore() {
 
   return (
     <Layout>
-        <Flex direction={'column'} p={5}>
+        <Flex mt={20} direction={'column'} p={5}>
             <Flex direction={'column'}>
                 <Text mb={{base: '10px', md: '17px'}} color="var(--White, #FFF)" fontSize={{base: '20px', md: '24px'}} fontWeight={400} sx={{ 'text-edge': 'cap', 'leading-trim': 'both' }} opacity={'0.5'}>Top Creators</Text>
                 <Flex direction={{base: 'column', md: 'initial'}} gap={3}>
