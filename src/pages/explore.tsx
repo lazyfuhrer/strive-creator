@@ -1,121 +1,28 @@
+import CreatorCard from "@/components/CreatorCard";
 import Layout from "@/components/Layout";
 import TrendingProjectCard from "@/components/TrendingProjectCard";
-import { Camera, PersonS } from "@/icons/strive";
-import { Flex, Icon, Image, Text, Wrap, WrapItem } from "@chakra-ui/react";
+import { Flex, Text, Wrap, WrapItem } from "@chakra-ui/react";
 
 export default function Explore() {
   const cardCount = 12;
   const cardIndices = Array.from({ length: cardCount }, (_, index) => index);  
+
+  const creatorCardCount = 5;
+  const creatorCardIndices = Array.from({ length: creatorCardCount }, (_, index) => index); 
+
   return (
     <Layout>
         <Flex direction={'column'} p={5}>
             <Flex direction={'column'}>
-                <Text mb={['10px', '17px']} color="var(--White, #FFF)" fontSize={['20px', '24px']} fontWeight={400} sx={{ 'text-edge': 'cap', 'leading-trim': 'both' }} opacity={'0.5'}>Top Creators</Text>
+                <Text mb={{base: '10px', md: '17px'}} color="var(--White, #FFF)" fontSize={{base: '20px', md: '24px'}} fontWeight={400} sx={{ 'text-edge': 'cap', 'leading-trim': 'both' }} opacity={'0.5'}>Top Creators</Text>
                 <Flex direction={{base: 'column', md: 'initial'}} gap={3}>
-                    <Flex direction={{base: 'column', md: 'initial'}} w={{base: 'auto', md: '275.217px'}} h={{base: 'auto', md: '113.325px'}} borderRadius={'7.709px'} border={'0.771px solid var(--2, #5BB3EB)'} bg={'rgba(31, 31, 31, 0.15)'} backdropFilter={'blur(7.169522285461426px)'}>
-                        <Flex p={4} w={'100%'} justify={'space-between'} direction={{base: 'column', md: 'initial'}} gap={4}>
-                            <Image src="/explore/explore.svg" />
-                            <Flex direction={'column'} w={'100%'} align={{base: 'center', md: 'normal'}}>
-                                <Text color="var(--White, #FFF)" fontStyle={'normal'} fontSize={['15px', '18.502px']} fontWeight={400} sx={{ 'text-edge': 'cap', 'leading-trim': 'both' }}>Andy Ledenov</Text>
-                                <Flex mt={1} align={'center'} gap={2}>
-                                    <Icon as={Camera} />
-                                    <Text color="var(--White, #FFF)" fontSize={['5px', '10.793px']} fontStyle={'normal'} fontWeight={400}>
-                                        Vlogger
-                                    </Text>
-                                </Flex>
-                                <Flex mt={2} align={'center'} gap={2}>
-                                    <Icon as={PersonS} opacity={'0.5'} />
-                                    <Text color="var(--White, #FFF)" fontSize={['5px', '9.251px']} fontStyle={'normal'} fontWeight={400} opacity={'0.5'}>
-                                        230 Followers
-                                    </Text>
-                                </Flex>
-                            </Flex>    
-                        </Flex>
-                    </Flex>
-
-                    <Flex direction={{base: 'column', md: 'initial'}} w={{base: 'auto', md: '275.217px'}} h={{base: 'auto', md: '113.325px'}} borderRadius={'7.709px'} border={'0.771px solid var(--2, #5BB3EB)'} bg={'rgba(31, 31, 31, 0.15)'} backdropFilter={'blur(7.169522285461426px)'}>
-                        <Flex p={4} w={'100%'} justify={'space-between'} direction={{base: 'column', md: 'initial'}} gap={4}>
-                            <Image src="/explore/explore.svg" />
-                            <Flex direction={'column'} w={'100%'} align={{base: 'center', md: 'normal'}}>
-                                <Text color="var(--White, #FFF)" fontStyle={'normal'} fontSize={['15px', '18.502px']} fontWeight={400} sx={{ 'text-edge': 'cap', 'leading-trim': 'both' }}>Andy Ledenov</Text>
-                                <Flex mt={1} align={'center'} gap={2}>
-                                    <Icon as={Camera} />
-                                    <Text color="var(--White, #FFF)" fontSize={['5px', '10.793px']} fontStyle={'normal'} fontWeight={400}>
-                                        Vlogger
-                                    </Text>
-                                </Flex>
-                                <Flex mt={2} align={'center'} gap={2}>
-                                    <Icon as={PersonS} opacity={'0.5'} />
-                                    <Text color="var(--White, #FFF)" fontSize={['5px', '9.251px']} fontStyle={'normal'} fontWeight={400} opacity={'0.5'}>
-                                        230 Followers
-                                    </Text>
-                                </Flex>
-                            </Flex>    
-                        </Flex>
-                    </Flex>
-
-                    <Flex direction={{base: 'column', md: 'initial'}} w={{base: 'auto', md: '275.217px'}} h={{base: 'auto', md: '113.325px'}} borderRadius={'7.709px'} border={'0.771px solid var(--2, #5BB3EB)'} bg={'rgba(31, 31, 31, 0.15)'} backdropFilter={'blur(7.169522285461426px)'}>
-                        <Flex p={4} w={'100%'} justify={'space-between'} direction={{base: 'column', md: 'initial'}} gap={4}>
-                            <Image src="/explore/explore.svg" />
-                            <Flex direction={'column'} w={'100%'} align={{base: 'center', md: 'normal'}}>
-                                <Text color="var(--White, #FFF)" fontStyle={'normal'} fontSize={['15px', '18.502px']} fontWeight={400} sx={{ 'text-edge': 'cap', 'leading-trim': 'both' }}>Andy Ledenov</Text>
-                                <Flex mt={1} align={'center'} gap={2}>
-                                    <Icon as={Camera} />
-                                    <Text color="var(--White, #FFF)" fontSize={['5px', '10.793px']} fontStyle={'normal'} fontWeight={400}>
-                                        Vlogger
-                                    </Text>
-                                </Flex>
-                                <Flex mt={2} align={'center'} gap={2}>
-                                    <Icon as={PersonS} opacity={'0.5'} />
-                                    <Text color="var(--White, #FFF)" fontSize={['5px', '9.251px']} fontStyle={'normal'} fontWeight={400} opacity={'0.5'}>
-                                        230 Followers
-                                    </Text>
-                                </Flex>
-                            </Flex>    
-                        </Flex>
-                    </Flex>
-
-                    <Flex direction={{base: 'column', md: 'initial'}} w={{base: 'auto', md: '275.217px'}} h={{base: 'auto', md: '113.325px'}} borderRadius={'7.709px'} border={'0.771px solid var(--2, #5BB3EB)'} bg={'rgba(31, 31, 31, 0.15)'} backdropFilter={'blur(7.169522285461426px)'}>
-                        <Flex p={4} w={'100%'} justify={'space-between'} direction={{base: 'column', md: 'initial'}} gap={4}>
-                            <Image src="/explore/explore.svg" />
-                            <Flex direction={'column'} w={'100%'} align={{base: 'center', md: 'normal'}}>
-                                <Text color="var(--White, #FFF)" fontStyle={'normal'} fontSize={['15px', '18.502px']} fontWeight={400} sx={{ 'text-edge': 'cap', 'leading-trim': 'both' }}>Andy Ledenov</Text>
-                                <Flex mt={1} align={'center'} gap={2}>
-                                    <Icon as={Camera} />
-                                    <Text color="var(--White, #FFF)" fontSize={['5px', '10.793px']} fontStyle={'normal'} fontWeight={400}>
-                                        Vlogger
-                                    </Text>
-                                </Flex>
-                                <Flex mt={2} align={'center'} gap={2}>
-                                    <Icon as={PersonS} opacity={'0.5'} />
-                                    <Text color="var(--White, #FFF)" fontSize={['5px', '9.251px']} fontStyle={'normal'} fontWeight={400} opacity={'0.5'}>
-                                        230 Followers
-                                    </Text>
-                                </Flex>
-                            </Flex>    
-                        </Flex>
-                    </Flex>
-
-                    <Flex direction={{base: 'column', md: 'initial'}} w={{base: 'auto', md: '275.217px'}} h={{base: 'auto', md: '113.325px'}} borderRadius={'7.709px'} border={'0.771px solid var(--2, #5BB3EB)'} bg={'rgba(31, 31, 31, 0.15)'} backdropFilter={'blur(7.169522285461426px)'}>
-                        <Flex p={4} w={'100%'} justify={'space-between'} direction={{base: 'column', md: 'initial'}} gap={4}>
-                            <Image src="/explore/explore.svg" />
-                            <Flex direction={'column'} w={'100%'} align={{base: 'center', md: 'normal'}}>
-                                <Text color="var(--White, #FFF)" fontStyle={'normal'} fontSize={['15px', '18.502px']} fontWeight={400} sx={{ 'text-edge': 'cap', 'leading-trim': 'both' }}>Andy Ledenov</Text>
-                                <Flex mt={1} align={'center'} gap={2}>
-                                    <Icon as={Camera} />
-                                    <Text color="var(--White, #FFF)" fontSize={['5px', '10.793px']} fontStyle={'normal'} fontWeight={400}>
-                                        Vlogger
-                                    </Text>
-                                </Flex>
-                                <Flex mt={2} align={'center'} gap={2}>
-                                    <Icon as={PersonS} opacity={'0.5'} />
-                                    <Text color="var(--White, #FFF)" fontSize={['5px', '9.251px']} fontStyle={'normal'} fontWeight={400} opacity={'0.5'}>
-                                        230 Followers
-                                    </Text>
-                                </Flex>
-                            </Flex>    
-                        </Flex>
-                    </Flex>
+                    <Wrap justify={{ base: "center", md: "normal" }} spacing={3}>
+                        {creatorCardIndices.map((index) => (
+                            <WrapItem key={index} w={{base: 'full', md: 'auto'}}>
+                                <CreatorCard />
+                            </WrapItem>
+                        ))}
+                    </Wrap>
                 </Flex>
             </Flex>
 
