@@ -8,8 +8,7 @@ import { configureChains, createConfig, WagmiConfig } from 'wagmi';
 import { polygonMumbai } from 'wagmi/chains';
 import { alchemyProvider } from 'wagmi/providers/alchemy';
 import { publicProvider } from 'wagmi/providers/public';
-import Script from 'next/script';
-// import { GoogleTagManager } from '@next/third-parties/google'
+import { GoogleAnalytics } from '@next/third-parties/google'
 
 const tomorrow = Tomorrow({ weight: ['300', '400', '500', '600'], subsets: ['latin'] });
 
@@ -48,18 +47,8 @@ export default function App({ Component, pageProps }: AppProps) {
       >
         <ChakraProvider toastOptions={{ defaultOptions: { position: 'top-right' } }}>
           <main className={tomorrow.className}>
-            {/* <!-- Google tag (gtag.js) --> */}
-            <Script async src="https://www.googletagmanager.com/gtag/js?id=G-ED21VRT398"/>
-            <Script id="my-script">
-              {`
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){dataLayer.push(arguments);}
-                gtag('js', new Date());
-                gtag('config', 'G-ED21VRT398');
-              `}
-            </Script>
             <Component {...pageProps} />
-            {/* <GoogleTagManager gtmId="G-84RP516MXT" /> */}
+            <GoogleAnalytics gaId="G-NCQKBRNVDW" />
           </main>
         </ChakraProvider>
       </RainbowKitProvider>
